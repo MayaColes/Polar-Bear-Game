@@ -4,7 +4,6 @@ import Windows.GameWindow;
 
 public class Globals {
     public static String SAVE_FILE = "_Save.dat";
-    public static final String CONFIG_FILE = "_Config.dat";
     
     public static final String POLAR_BEAR_IMAGE = "Polar Bear.jpg";
     public static final String IMAGES_FOLDER = "Images/";
@@ -29,21 +28,7 @@ public class Globals {
     
     public static final int END_OF_ARRAY_MARKER = -1;
     
-    public static final char END_OF_RECORD_MARKER = ';';
-    public static final char END_OF_NAME_MARKER = '=';
-    public static final char END_OF_RATIO_MARKER = '@';
-    public static final char END_OF_COST_MARKER = '?';
-    public static final char END_OF_RESOURCE_MARKER = '-';
-    public static final char END_OF_TOOLTIP_MARKER = '+';
-    public static final char END_OF_EFFECT_MARKER = '&';
-    public static final char END_OF_COLOR_MARKER = '$';
-    public static final char END_OF_TIME_MARKER = '#';
-    public static final char END_OF_FAVOUR_MARKER = '-';
-    public static final char END_OF_DEPENDANCY_MARKER = '~';
-    public static final char END_OF_FILENAME_MARKER = '^';
-    
     public static final char DEFAULT_IDENTIFIER = '!';
-    public static final char NO_DEPENDANCY_MARKER = '-';
     public static final char RESOURCE_IDENTIFIER = 'r';
     public static final char CRAFTABLE_RESOURCE_IDENTIFIER = 'c';
     public static final char JOB_IDENTIFIER = 'j';
@@ -80,8 +65,7 @@ public class Globals {
 
     public static double[] AMOUNT_PER_SECOND = new double[NUMBER_OF_RESOURCES];
     public static double[] AMOUNT_PER_SECOND_CRAFTABLE = new double[NUMBER_OF_CRAFTABLE_RESOURCES];
-    
-    public static int END_OF_LAST_CONFIG = -1;
+
     public static int WIDTH_OF_SCREEN = 0;
     public static int HEIGHT_OF_SCREEN = 0;
     public static int BUILDING_GRID_COLOMN = 0;
@@ -103,8 +87,7 @@ public class Globals {
     public static final int MAGIC_SCREEN = 3;
     public static final int CRAFTING_SCREEN = 4;
     public static final int TRADE_SCREEN = 5;
-    
-    public static String CONFIG = null;
+
     public static GameWindow GAME = null;
     
     public static final String ASCII_ART = "                                                 ------           ------                                                    \n" +

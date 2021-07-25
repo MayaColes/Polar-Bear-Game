@@ -326,11 +326,4 @@ public class Initialize {
         FileIO.openConfigFiles();
         FileIO.readFromConfigFiles();
     }
-    public static String buildFromConfig(){
-        int index = Globals.END_OF_LAST_CONFIG;
-        int index2 = Globals.CONFIG.indexOf(Globals.END_OF_RECORD_MARKER, Globals.END_OF_LAST_CONFIG + 1);
-        String s = Globals.CONFIG.substring(index + 1, index2 + 1);
-        Globals.END_OF_LAST_CONFIG = index2;
-        return s;
-    }
 }

@@ -161,12 +161,10 @@ public class AmountCalculator {
         }
         for(i = Globals.ALL_BUILDINGS[index].getNumberEnabled(); i >= 0 && !canProduce; i--){
             if(Utils.checkBuildingProduction(index, i)){
-                 canProduce = true;   
-                 //System.out.println(canProduce + " " + i + " " + Globals.ALL_BUILDINGS[index].getName());
+                 canProduce = true;
             }
         }
         i++;
-        //System.out.println(Globals.ALL_BUILDINGS[index].getName() + " " + i);
         return i;
     }
     public static void calculateBuildingProductionBonuses(){

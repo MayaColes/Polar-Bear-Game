@@ -1219,7 +1219,6 @@ public class GameWindow implements ActionListener, MouseMotionListener{
         }
         for(int i = 0; i < Globals.NUMBER_OF_UPGRADES; i++){
             if(buttonPressed == upgrades[i]){
-                System.out.println(Globals.ALL_UPGRADES[i].getOneEffect(0).getEffectsWhatResource());
                 Globals.ALL_UPGRADES[i].researchUpgrade();
                 refreshVillage();
             }
