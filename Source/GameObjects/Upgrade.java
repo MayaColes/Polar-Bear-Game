@@ -4,13 +4,13 @@ import incrementalgame.Initialize;
 import java.util.ArrayList;
 
 public class Upgrade extends Buildable{
-    private boolean researched;
+    private transient boolean researched;
     private int dependancy;
-    private boolean visible;
+    private transient boolean visible;
     private String toolTipText;
     private ArrayList<Effect> effects;
     private boolean scienceDependancy;
-    private String config;
+    private transient String config;
     
     public Upgrade(){
         researched = true;

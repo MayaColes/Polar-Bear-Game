@@ -1,0 +1,104 @@
+[
+  {
+    "name": "Scavenger",
+    "toolTipText": "Will pick things up off the ground for you. Is better at finding wood and ice.",
+    "identifier": "s",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.15,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 1,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.15,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 3,
+        "effectsWhatResource": -1
+      }
+    ]
+  },
+  {
+    "name": "Farmer",
+    "toolTipText": "Farmers will produce 5 berries per second.",
+    "identifier": "f",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 5.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 0,
+        "effectsWhatResource": -1
+      }
+    ]
+  },
+  {
+    "name": "Researcher",
+    "toolTipText": "Produces 0.3 science per second. They all have pocket protectors.",
+    "identifier": "r",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.3,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 4,
+        "effectsWhatResource": -1
+      }
+    ]
+  },
+  {
+    "name": "Sorcerer",
+    "toolTipText": "Produces 0.03 magic per second.",
+    "identifier": "S",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.03,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 8,
+        "effectsWhatResource": -1
+      }
+    ]
+  },
+  {
+    "name": "Miner",
+    "toolTipText": "Produces 0.1 stone per second",
+    "identifier": "m",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.3,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 5,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.1,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 9,
+        "effectsWhatResource": -1
+      }
+    ]
+  },
+  {
+    "name": "Hunter",
+    "toolTipText": "Can be sent out hunting every two minutes.",
+    "identifier": "h",
+    "effects": []
+  },
+  {
+    "name": "Trader",
+    "toolTipText": "Can be sent out to trade or as an envoy",
+    "identifier": "t",
+    "effects": []
+  },
+  {
+    "name": "Warrior",
+    "toolTipText": "Protect your village",
+    "identifier": "w",
+    "effects": []
+  }
+]

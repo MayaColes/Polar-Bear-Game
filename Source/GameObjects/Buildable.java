@@ -5,11 +5,11 @@ import Utils.Globals;
 abstract public class Buildable{
     private String name;
     private char identifier;
-    private int[] resourcesRequired;
+    private char[] resourcesRequired;
     private double[] price;
     private boolean[] resourceCraftable;
-    private String config;
-    private String dependancy;
+    private transient String config;
+    private transient String dependancy;
     
     public Buildable(){
         name = "";
@@ -25,7 +25,7 @@ abstract public class Buildable{
         name = config.substring(config.indexOf(Globals.END_OF_DEPENDANCY_MARKER) + 1, config.indexOf(Globals.END_OF_NAME_MARKER));
         
         price = new double[Integer.parseInt("" + config.charAt(config.indexOf(Globals.END_OF_NAME_MARKER) + 1))];
-        resourcesRequired = new int[price.length];
+        resourcesRequired = new char[price.length];
         resourceCraftable = new boolean[price.length];
             
         config = config.substring(config.indexOf(Globals.END_OF_NAME_MARKER) + 2);
@@ -36,21 +36,11 @@ abstract public class Buildable{
             
             if(config.charAt(0) == 't'){
                 resourceCraftable[j] = true;
-                for(int i = 0; i < Globals.NUMBER_OF_CRAFTABLE_RESOURCES && !found; i++){
-                    if(resourceIdentifier == Globals.ALL_CRAFTABLE_RESOURCES[i].getIdentifier()){
-                        resourcesRequired[j] = i;
-                        found = true;
-                    }
-                }
+                resourcesRequired[j] = resourceIdentifier;
             }
             else{
                 resourceCraftable[j] = false;
-                for(int i = 0; i < Globals.NUMBER_OF_RESOURCES && !found; i++){
-                    if(resourceIdentifier == Globals.ALL_RESOURCES[i].getIdentifier()){
-                        resourcesRequired[j] = i;
-                        found = true;
-                    }
-                }
+                resourcesRequired[j] = resourceIdentifier;
             }
             
             if(config.substring(2,config.indexOf(Globals.END_OF_RESOURCE_MARKER)-1).length() == 0){

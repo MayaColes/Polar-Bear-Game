@@ -1,0 +1,541 @@
+[
+  {
+    "increaseRatio": 3.0,
+    "toolTipText": "This house can hold two bears. Bears need 3 berries and 0.5 water per second.",
+    "secondaryToolTip": "Nice and cold :)",
+    "effects": [
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 2.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 6,
+        "effectsWhatResource": -1
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": -1,
+    "name": "Igloo",
+    "identifier": "i",
+    "resourcesRequired": [
+      3
+    ],
+    "price": [
+      10.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.25,
+    "toolTipText": "Produces Berries.",
+    "secondaryToolTip": "No snacking",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.73,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 0,
+        "effectsWhatResource": -1
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": -1,
+    "name": "Berry Field",
+    "identifier": "b",
+    "resourcesRequired": [
+      0
+    ],
+    "price": [
+      10.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.25,
+    "toolTipText": "Libraries can be used to store science. They also provide a bonus to your science production.",
+    "secondaryToolTip": "What are these squiggly marks?",
+    "effects": [
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 250.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 4,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.1,
+        "effectsWhatObjectType": "j",
+        "effectsWhatObject": 2,
+        "effectsWhatResource": 4
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": -1,
+    "name": "Library",
+    "identifier": "l",
+    "resourcesRequired": [
+      1
+    ],
+    "price": [
+      20.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.15,
+    "toolTipText": "Provides a 20% bonus to stone production.",
+    "secondaryToolTip": "What\u0027s mine is mine and what\u0027s yours is also mine.",
+    "effects": [
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.2,
+        "effectsWhatObjectType": "j",
+        "effectsWhatObject": 4,
+        "effectsWhatResource": 5
+      },
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.05,
+        "effectsWhatObjectType": "j",
+        "effectsWhatObject": 4,
+        "effectsWhatResource": 9
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": 3,
+    "name": "Mine",
+    "identifier": "m",
+    "resourcesRequired": [
+      1
+    ],
+    "price": [
+      50.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "increaseRatio": 2.5,
+    "toolTipText": "Uses wood to melt ice into water.",
+    "secondaryToolTip": "So warm...",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 1.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 7,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "-",
+        "effectAmount": 0.1,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 1,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "-",
+        "effectAmount": 0.1,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 3,
+        "effectsWhatResource": -1
+      }
+    ],
+    "enablable": true,
+    "scienceDependancy": true,
+    "dependancy": -1,
+    "name": "Bonfire",
+    "identifier": "B",
+    "resourcesRequired": [
+      1
+    ],
+    "price": [
+      10.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.15,
+    "toolTipText": "Increases your magic limit and gives a small magic production bonus. ",
+    "secondaryToolTip": "I wonder what they do up there?",
+    "effects": [
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 20.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 8,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.06,
+        "effectsWhatObjectType": "j",
+        "effectsWhatObject": 3,
+        "effectsWhatResource": 8
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": 6,
+    "name": "Tower",
+    "identifier": "t",
+    "resourcesRequired": [
+      1,
+      5
+    ],
+    "price": [
+      30.0,
+      50.0
+    ],
+    "resourceCraftable": [
+      false,
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.5,
+    "toolTipText": "Increase your resource limits.",
+    "secondaryToolTip": "Don\u0027t organize your stuff, just hide it behind walls.",
+    "effects": [
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 1000.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 0,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 350.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 1,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 75.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 2,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 350.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 3,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 600.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 5,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 50.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 9,
+        "effectsWhatResource": -1
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": 1,
+    "name": "Storage Shed",
+    "identifier": "s",
+    "resourcesRequired": [
+      1
+    ],
+    "price": [
+      30.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.15,
+    "toolTipText": "Consumes wood and ore to produce iron.",
+    "secondaryToolTip": "I\u0027m smeelltiing!!",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.1,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 2,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "-",
+        "effectAmount": 0.1,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 1,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "-",
+        "effectAmount": 0.3,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 9,
+        "effectsWhatResource": -1
+      }
+    ],
+    "enablable": true,
+    "scienceDependancy": true,
+    "dependancy": 4,
+    "name": "Smeltery",
+    "identifier": "S",
+    "resourcesRequired": [
+      5
+    ],
+    "price": [
+      250.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.25,
+    "toolTipText": "Improves your science limit and production.",
+    "secondaryToolTip": "I just nap here and it looks like i\u0027m learning.",
+    "effects": [
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 500.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 4,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.2,
+        "effectsWhatObjectType": "j",
+        "effectsWhatObject": 2,
+        "effectsWhatResource": 4
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": 5,
+    "name": "School",
+    "identifier": "c",
+    "resourcesRequired": [
+      1,
+      5
+    ],
+    "price": [
+      100.0,
+      120.0
+    ],
+    "resourceCraftable": [
+      false,
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.2,
+    "toolTipText": "Improves crafting effectiveness.",
+    "secondaryToolTip": "I made a birdhouse!",
+    "effects": [
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.06,
+        "effectsWhatObjectType": "e",
+        "effectsWhatObject": -1,
+        "effectsWhatResource": -1
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": 7,
+    "name": "Tinkerer\u0027s Station",
+    "identifier": "T",
+    "resourcesRequired": [
+      1,
+      5
+    ],
+    "price": [
+      50.0,
+      200.0
+    ],
+    "resourceCraftable": [
+      false,
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.15,
+    "toolTipText": "You can now get clean water from the ground.",
+    "secondaryToolTip": "Well, well, well, what do we have here?",
+    "effects": [
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 50.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 7,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.7,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 7,
+        "effectsWhatResource": -1
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": 7,
+    "name": "Well",
+    "identifier": "w",
+    "resourcesRequired": [
+      5,
+      2
+    ],
+    "price": [
+      300.0,
+      5.0
+    ],
+    "resourceCraftable": [
+      false,
+      true
+    ]
+  },
+  {
+    "increaseRatio": 1.15,
+    "toolTipText": "Increase your resource limits even more!",
+    "secondaryToolTip": "",
+    "effects": [
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 100.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 1,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 50.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 2,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 50.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 3,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 250.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 5,
+        "effectsWhatResource": -1
+      },
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 25.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 9,
+        "effectsWhatResource": -1
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": 7,
+    "name": "Warehouse",
+    "identifier": "W",
+    "resourcesRequired": [
+      2,
+      3,
+      4
+    ],
+    "price": [
+      3.0,
+      5.0,
+      1.0
+    ],
+    "resourceCraftable": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "increaseRatio": 1.3,
+    "toolTipText": "Build a house for one bear.",
+    "secondaryToolTip": "Little house on the tundra.",
+    "effects": [
+      {
+        "typeOfEffect": "m",
+        "effectAmount": 1.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 6,
+        "effectsWhatResource": -1
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": 7,
+    "name": "Cabin",
+    "identifier": "C",
+    "resourcesRequired": [
+      1,
+      5
+    ],
+    "price": [
+      120.0,
+      150.0
+    ],
+    "resourceCraftable": [
+      false,
+      false
+    ]
+  },
+  {
+    "increaseRatio": 1.15,
+    "toolTipText": "Improves the effectiveness of berry fields.",
+    "secondaryToolTip": "Rome wasn\u0027t built in a day, but this was!",
+    "effects": [
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.03,
+        "effectsWhatObjectType": "b",
+        "effectsWhatObject": 1,
+        "effectsWhatResource": 0
+      }
+    ],
+    "enablable": false,
+    "scienceDependancy": true,
+    "dependancy": 9,
+    "name": "Aquaduct",
+    "identifier": "a",
+    "resourcesRequired": [
+      5
+    ],
+    "price": [
+      100.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  }
+]

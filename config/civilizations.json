@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Raccoons",
+    "imageFile": "Raccoon.jpg",
+    "buysResource": 1,
+    "buyAmount": 75.0,
+    "sellResource": 5,
+    "defaultSellAmount": 300.0,
+    "scienceFavour": 0.5,
+    "magicFavour": 0.5,
+    "warFavour": 0.2,
+    "populationFavour": 0.5,
+    "happinessFavour": 0.6,
+    "tradeTime": 30,
+    "description": "Explorers from the South. Your village is fascinated by their tales of the tiny oceans they live near."
+  },
+  {
+    "name": "Salamanders",
+    "imageFile": "Salamander.jpg",
+    "buysResource": 5,
+    "buyAmount": 500.0,
+    "sellResource": 2,
+    "defaultSellAmount": 50.0,
+    "scienceFavour": 0.8,
+    "magicFavour": 0.6,
+    "warFavour": 0.0,
+    "populationFavour": 0.5,
+    "happinessFavour": 0.8,
+    "tradeTime": 30,
+    "description": "A peaceful people with great command over both the powers of science and magic. No one actually knows where they come from, your traders just leave goods in the deserts where they are presumed to live and find new goods when they return the next day."
+  }
+]

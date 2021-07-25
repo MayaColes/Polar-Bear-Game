@@ -7,25 +7,25 @@ import java.util.ArrayList;
 
 public class Civilization {
     private String name;
-    private String status;
+    private transient String status;
     private String imageFile;
     private int buysResource;
     private double buyAmount;
     private int sellResource;
     private double defaultSellAmount;
-    private double sellAmount;
-    private int hostility;
+    private transient double sellAmount;
+    private transient int hostility;
     private double scienceFavour;
     private double magicFavour;
     private double warFavour;
     private double populationFavour;
     private double happinessFavour;
-    private boolean revealed;
-    private double raceStanding;
+    private transient boolean revealed;
+    private transient double raceStanding;
     private int tradeTime;
     private String description;
-    private ArrayList<Integer> trades;
-    private ArrayList<Integer> gifts;
+    private transient ArrayList<Integer> trades;
+    private transient ArrayList<Integer> gifts;
     
     public Civilization(){
         name = "";

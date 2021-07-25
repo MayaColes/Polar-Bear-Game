@@ -1,0 +1,47 @@
+[
+  {
+    "dependancy": 0,
+    "toolTipText": "Control the mighty powers of dust motes. Also works on snow.",
+    "name": "Dustomancy",
+    "identifier": "d",
+    "resourcesRequired": [
+      "m"
+    ],
+    "price": [
+      50.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "dependancy": 0,
+    "toolTipText": "Turn this into that! Wow!",
+    "name": "Transfiguration",
+    "identifier": "t",
+    "resourcesRequired": [
+      "m"
+    ],
+    "price": [
+      100.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "dependancy": 0,
+    "toolTipText": "Uhh.. That building was always on fire...",
+    "name": "Pyromancy",
+    "identifier": "p",
+    "resourcesRequired": [
+      "m"
+    ],
+    "price": [
+      170.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  }
+]

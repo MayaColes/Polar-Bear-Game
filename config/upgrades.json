@@ -1,0 +1,136 @@
+[
+  {
+    "dependancy": 3,
+    "toolTipText": "Scavengers can use these axes to cut down small trees that they find. Increases wood production.",
+    "effects": [
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.5,
+        "effectsWhatObjectType": "j",
+        "effectsWhatObject": 0,
+        "effectsWhatResource": 1
+      }
+    ],
+    "scienceDependancy": true,
+    "name": "Stone Axes",
+    "identifier": "s",
+    "resourcesRequired": [
+      "S"
+    ],
+    "price": [
+      50.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "dependancy": 8,
+    "toolTipText": "Purify some of your ore into gold through reacting impurities with salt.",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.005,
+        "effectsWhatObjectType": "b",
+        "effectsWhatObject": 7,
+        "effectsWhatResource": 11
+      }
+    ],
+    "scienceDependancy": true,
+    "name": "Salt Cementation",
+    "identifier": "S",
+    "resourcesRequired": [
+      "W",
+      "s"
+    ],
+    "price": [
+      250.0,
+      5000.0
+    ],
+    "resourceCraftable": [
+      false,
+      false
+    ]
+  },
+  {
+    "dependancy": 10,
+    "toolTipText": "Dig deep into the crust of the planet.",
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.01,
+        "effectsWhatObjectType": "j",
+        "effectsWhatObject": 4,
+        "effectsWhatResource": 10
+      }
+    ],
+    "scienceDependancy": true,
+    "name": "Deep Mining",
+    "identifier": "d",
+    "resourcesRequired": [
+      "i",
+      "b",
+      "s"
+    ],
+    "price": [
+      200.0,
+      50.0,
+      5000.0
+    ],
+    "resourceCraftable": [
+      false,
+      true,
+      false
+    ]
+  },
+  {
+    "dependancy": 4,
+    "toolTipText": "Stronger axes for your scavengers.",
+    "effects": [
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.3,
+        "effectsWhatObjectType": "j",
+        "effectsWhatObject": 0,
+        "effectsWhatResource": 1
+      }
+    ],
+    "scienceDependancy": true,
+    "name": "Iron Axes",
+    "identifier": "i",
+    "resourcesRequired": [
+      "i"
+    ],
+    "price": [
+      100.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "dependancy": 3,
+    "toolTipText": "Using hoes to till the soil is much easier.",
+    "effects": [
+      {
+        "typeOfEffect": "%",
+        "effectAmount": 0.25,
+        "effectsWhatObjectType": "j",
+        "effectsWhatObject": 1,
+        "effectsWhatResource": 0
+      }
+    ],
+    "scienceDependancy": true,
+    "name": "Stone Hoes",
+    "identifier": "h",
+    "resourcesRequired": [
+      "S"
+    ],
+    "price": [
+      100.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  }
+]

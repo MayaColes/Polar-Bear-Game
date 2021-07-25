@@ -4,13 +4,13 @@ import Utils.Utils;
 import incrementalgame.Initialize;
 
 public class MagicEffect {
-    private boolean visible;
+    private transient boolean visible;
     private String name;
     private String toolTipText;
-    private boolean enabled;
+    private transient boolean enabled;
     private int dependancy;
     private boolean enablable;
-    private String[] effects;
+    private transient String[] effects;
     private char[] typeOfEffect;
     private double[] effectAmount;
     private char[] effectsWhatObjectType;

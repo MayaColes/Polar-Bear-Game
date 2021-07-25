@@ -3,10 +3,10 @@ import Utils.Globals;
 import Utils.Utils;
 
 public class Effect {
-    private String stringEffect;
+    private transient String stringEffect;
     private char typeOfEffect;
     private double effectAmount;
-    private double effectAmountWithBonus;
+    private transient double effectAmountWithBonus;
     private char effectsWhatObjectType;
     private int effectsWhatObject;
     private int effectsWhatResource;

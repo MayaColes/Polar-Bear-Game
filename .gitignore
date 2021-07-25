@@ -5,3 +5,6 @@
 /out/
 /Polar-Bear-Game.iml
 /META-INF
+/target/
+/lib/
+.DS_Store

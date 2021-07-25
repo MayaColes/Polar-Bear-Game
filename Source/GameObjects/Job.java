@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 public class Job {
     private String name;
-    private int numberWorking;
+    private transient int numberWorking;
     private String toolTipText;
-    private boolean visible;
+    private transient boolean visible;
     private char identifier;
     private ArrayList<Effect> effects;
-    private String config;
+    private transient String config;
     
     public Job(){
         name = "";

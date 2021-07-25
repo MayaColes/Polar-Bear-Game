@@ -1,0 +1,118 @@
+[
+  {
+    "toolTipText": "",
+    "canCraft": false,
+    "dependancy": 2,
+    "scienceDependancy": true,
+    "name": "Pelts",
+    "identifier": "p",
+    "resourcesRequired": [],
+    "price": [],
+    "resourceCraftable": []
+  },
+  {
+    "toolTipText": "",
+    "canCraft": false,
+    "dependancy": 2,
+    "scienceDependancy": true,
+    "name": "Tusks",
+    "identifier": "t",
+    "resourcesRequired": [],
+    "price": [],
+    "resourceCraftable": []
+  },
+  {
+    "toolTipText": "A wooden beam. Important for advanced structures.",
+    "canCraft": true,
+    "dependancy": 4,
+    "scienceDependancy": true,
+    "name": "Beam",
+    "identifier": "b",
+    "resourcesRequired": [
+      "w"
+    ],
+    "price": [
+      150.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "toolTipText": "A heavy stone block. Used as a base for structures or to construct its walls.",
+    "canCraft": true,
+    "dependancy": 4,
+    "scienceDependancy": true,
+    "name": "Block",
+    "identifier": "B",
+    "resourcesRequired": [
+      "S"
+    ],
+    "price": [
+      300.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "toolTipText": "Thick iron nails used to keep buildings in one piece.",
+    "canCraft": true,
+    "dependancy": 4,
+    "scienceDependancy": true,
+    "name": "Iron Nail",
+    "identifier": "i",
+    "resourcesRequired": [
+      "i"
+    ],
+    "price": [
+      70.0
+    ],
+    "resourceCraftable": [
+      false
+    ]
+  },
+  {
+    "toolTipText": "This crystal can be used to channel magical energy.",
+    "canCraft": true,
+    "dependancy": 6,
+    "scienceDependancy": true,
+    "name": "Crystal",
+    "identifier": "c",
+    "resourcesRequired": [
+      "I",
+      "m",
+      "o"
+    ],
+    "price": [
+      100.0,
+      150.0,
+      100.0
+    ],
+    "resourceCraftable": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "toolTipText": "Combining high-carbon diamonds with iron produces a stronger, more workable metal.",
+    "canCraft": true,
+    "dependancy": 10,
+    "scienceDependancy": true,
+    "name": "Steel",
+    "identifier": "s",
+    "resourcesRequired": [
+      "i",
+      "d"
+    ],
+    "price": [
+      100.0,
+      100.0
+    ],
+    "resourceCraftable": [
+      false,
+      false
+    ]
+  }
+]

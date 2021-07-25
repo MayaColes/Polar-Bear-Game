@@ -5,13 +5,13 @@ import incrementalgame.Initialize;
 
 public class CraftableResource extends Buildable{
     private String toolTipText;
-    private double amount;
+    private transient double amount;
     private boolean canCraft;
-    private boolean craftable;
-    private boolean visible;
+    private transient boolean craftable;
+    private transient boolean visible;
     private int dependancy;
     private boolean scienceDependancy;
-    private String config;
+    private transient String config;
     
     public CraftableResource(){
         amount = 0;

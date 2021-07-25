@@ -3,14 +3,14 @@ import Utils.Globals;
 import incrementalgame.Initialize;
 
 public class Resource {
-    private double amount;
+    private transient double amount;
     private String name;
     private double defaultMaximum;
-    private double maximum;
-    private boolean visible;
+    private transient double maximum;
+    private transient boolean visible;
     private String color;
     private char identifier;
-    private String config;
+    private transient String config;
     
     public Resource(){
         amount = 0;

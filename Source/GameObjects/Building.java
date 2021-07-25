@@ -4,17 +4,17 @@ import incrementalgame.Initialize;
 import java.util.ArrayList;
 
 public class Building extends Buildable{
-    private int numberBuilt;
+    private transient int numberBuilt;
     private double increaseRatio;
     private String toolTipText;
     private String secondaryToolTip;
     private ArrayList<Effect> effects;
     private boolean enablable;
-    private int numberEnabled;
-    private String config;
+    private transient int numberEnabled;
+    private transient String config;
     private boolean scienceDependancy;
     private int dependancy;
-    private boolean buildable;
+    private transient boolean buildable;
     
     public Building(){
         numberBuilt = 0;

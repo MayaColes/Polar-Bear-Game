@@ -3,11 +3,11 @@ import Utils.Globals;
 import incrementalgame.Initialize;
 
 public class Magic extends Buildable{
-    private boolean isResearched;
+    private transient boolean isResearched;
     private int dependancy;
     private String toolTipText;
-    private boolean visible;
-    private String config;
+    private transient boolean visible;
+    private transient String config;
     
     public Magic(){
         isResearched = false;
