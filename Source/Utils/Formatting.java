@@ -1,4 +1,5 @@
 package Utils;
+import GameObjects.*;
 
 public class Formatting {
     public static String padWithSpaces(String str, int length){
@@ -89,44 +90,54 @@ public class Formatting {
     }
     public static String buildingTooltip(int buildingNumber){
         StringBuffer s = new StringBuffer();
-        
-        s.append("<html>" + sizeToolTip(Globals.ALL_BUILDINGS[buildingNumber].getToolTipText(), 50) + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
-        for(int l = 0; l < Globals.ALL_BUILDINGS[buildingNumber].getNumberOfResources(); l++){
-            if(!Globals.ALL_BUILDINGS[buildingNumber].getOneResourceCraftable(l)){
-                if(Globals.ALL_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getAmount() < Globals.ALL_BUILDINGS[buildingNumber].getOnePrice(l)){
-                    s.append("<br>" + coloredMiddlePadding(Globals.ALL_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getName() 
-                                + ": ", formatAmount(Globals.ALL_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getAmount()) + "/" + 
-                                        formatAmount(Globals.ALL_BUILDINGS[buildingNumber].getOnePrice(l)) + Utils.timeUntilCanBuild(buildingNumber, l), 45, "<font color=red>" ));
+        Building building = Globals.ALL_BUILDINGS[buildingNumber];
+
+        s.append("<html>" + sizeToolTip(building.getToolTipText(), 50) + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
+
+        for(int l = 0; l < building.getNumberOfResources(); l++){
+            if(!building.getOneResourceCraftable(l)){
+                Resource resource = Globals.ALL_RESOURCES[building.getOneRequired(l)];
+
+                if(resource.getAmount() < building.getOnePrice(l)){
+                    s.append("<br>" + coloredMiddlePadding(resource.getName()
+                                + ": ", formatAmount(resource.getAmount()) + "/" +
+                                        formatAmount(building.getOnePrice(l)) +
+                            Utils.timeUntilCanBuild(buildingNumber, l), 45, "<font color=red>" ));
                 }
                 else{
-                    s.append("<br>" + middlePadding(Globals.ALL_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getName() 
-                                + ": ", formatAmount(Globals.ALL_BUILDINGS[buildingNumber].getOnePrice(l)) + Utils.timeUntilCanBuild(buildingNumber, l), 45));
+                    s.append("<br>" + middlePadding(resource.getName()
+                                + ": ", formatAmount(building.getOnePrice(l)) +
+                            Utils.timeUntilCanBuild(buildingNumber, l), 45));
                 }
             }
             else{
-                if(Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getAmount() >= Globals.ALL_BUILDINGS[buildingNumber].getOnePrice(l)){
-                    s.append("<br>" + (middlePadding(Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getName() 
-                            + ": ", formatAmount(Globals.ALL_BUILDINGS[buildingNumber].getOnePrice(l)), 45)));
+                CraftableResource resource = Globals.ALL_CRAFTABLE_RESOURCES[building.getOneRequired(l)];
+
+                if(resource.getAmount() >= building.getOnePrice(l)){
+                    s.append("<br>" + (middlePadding(resource.getName()
+                            + ": ", formatAmount(building.getOnePrice(l)), 45)));
                 }
-                else if(Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getAmount() < Globals.ALL_BUILDINGS[buildingNumber].getOnePrice(l)){
+                else if(resource.getAmount() < building.getOnePrice(l)){
                     
-                    s.append("<br>" + (middlePadding(Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getName() 
-                            + ": ", formatAmount(Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getAmount()) + " / " + formatAmount(Globals.ALL_BUILDINGS[buildingNumber].getOnePrice(l)), 45)));
+                    s.append("<br>" + (middlePadding(resource.getName()
+                            + ": ", formatAmount(resource.getAmount()) + " / " + formatAmount(building.getOnePrice(l)), 45)));
                     
-                    for(int i = 0; i < Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getNumberOfResources(); i++){
+                    for(int i = 0; i < resource.getNumberOfResources(); i++){
                         
-                        int resourceNumber = Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getOneRequired(i);
+                        int resourceNumber = resource.getOneRequired(i);
+                        double amountNeeded = (building.getOnePrice(l) - resource.getAmount());
                         
-                        double amountNeeded = (Globals.ALL_BUILDINGS[buildingNumber].getOnePrice(l) - Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getAmount());
-                        
-                        amountNeeded = Math.ceil(amountNeeded / AmountCalculator.calculateCraftEffectiveness()) * Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_BUILDINGS[buildingNumber].getOneRequired(l)].getOnePrice(i);
+                        amountNeeded = Math.ceil(amountNeeded / AmountCalculator.calculateCraftEffectiveness()) * resource.getOnePrice(i);
                         
                         if(Globals.ALL_RESOURCES[resourceNumber].getAmount() >= amountNeeded){
                             s.append("<br>" + indent(2) + middlePadding("> " + Globals.ALL_RESOURCES[resourceNumber].getName() + ":", formatAmount(amountNeeded), 42));
                         }
                         else if(Globals.ALL_RESOURCES[resourceNumber].getAmount() < amountNeeded){
-                            s.append("<br>" + indent(2) + coloredMiddlePadding("> " + Globals.ALL_RESOURCES[resourceNumber].getName() + ":",
-                                    Utils.timeUntilAmount(resourceNumber, amountNeeded) + " " + formatAmount(Globals.ALL_RESOURCES[resourceNumber].getAmount()) + "/" + formatAmount(amountNeeded), 42, "<font color=red>"));
+                            s.append("<br>" + indent(2) + coloredMiddlePadding("> " +
+                                            Globals.ALL_RESOURCES[resourceNumber].getName() + ":",
+                                    Utils.timeUntilAmount(resourceNumber, amountNeeded) + " " +
+                                            formatAmount(Globals.ALL_RESOURCES[resourceNumber].getAmount()) + "/"
+                                            + formatAmount(amountNeeded), 42, "<font color=red>"));
                         }
                     }
                 }
@@ -135,14 +146,14 @@ public class Formatting {
         
         s.append("<br>" + "_____________________________________________" + "<br>" + "<br>" + "Effects:" + "<br>" + "<font color=light_gray>");
         
-        for(int i = 0; i < Globals.ALL_BUILDINGS[buildingNumber].getNumberOfEffects(); i++){
-            s.append(Globals.ALL_BUILDINGS[buildingNumber].getOneEffect(i).getStringEffect() + "<br>");
+        for(int i = 0; i < building.getNumberOfEffects(); i++){
+            s.append(building.getOneEffect(i).getStringEffect() + "<br>");
         }
         
         s.append("</font>");
         
-        if(Globals.ALL_BUILDINGS[buildingNumber].getSecondaryToolTip().length() != 0){
-            s.append("<br>" + "<i>" + middlePadding(" ", Globals.ALL_BUILDINGS[buildingNumber].getSecondaryToolTip(), 45) + "</i>");       
+        if(building.getSecondaryToolTip().length() != 0){
+            s.append("<br>" + "<i>" + middlePadding(" ", building.getSecondaryToolTip(), 45) + "</i>");
         }            
         
         return s + "<html>";
@@ -166,15 +177,19 @@ public class Formatting {
     }
     public static String resourceToolTip(int resourceNumber){
         StringBuffer s = new StringBuffer();
+
         s.append(Utils.timeUntilMaxMin(resourceNumber, false) + "<br>");
+
         if(AmountCalculator.totalPositiveResourceProduction[resourceNumber] > 0){
             s.append("> Building Production: +" + formatAmount(AmountCalculator.totalPositiveResourceProduction[resourceNumber]) + "/sec" + "<br>");
+
             if(AmountCalculator.buildingBonusProduction[resourceNumber] > 0){
                 s.append(indent(4) + "> Building Bonus: +" + (int)(100 * AmountCalculator.buildingBonusProduction[resourceNumber]) + "%" + "<br>");
             }
         }
         if(AmountCalculator.totalNegativeResourceProduction[resourceNumber] > 0 && AmountCalculator.bearResourceConsumption[resourceNumber] > 0){
             s.append("> Consumption: -" + formatAmount(AmountCalculator.totalNegativeResourceProduction[resourceNumber] + AmountCalculator.bearResourceConsumption[resourceNumber]) + "/sec" + "<br>");
+
             if(AmountCalculator.totalNegativeResourceProduction[resourceNumber] > 0){
                 s.append(indent(4) + "> Building Consumption: -" + formatAmount(AmountCalculator.totalNegativeResourceProduction[resourceNumber]) + "/sec" + "<br>");
             }
@@ -192,6 +207,7 @@ public class Formatting {
         }
         if(AmountCalculator.totalJobResourceProduction[resourceNumber] > 0){
             s.append("> Job Production: +" + formatAmount(AmountCalculator.totalJobResourceProduction[resourceNumber]) + "/sec" + "<br>");
+
             if(AmountCalculator.totalJobPercentBonus[resourceNumber] > 0){
                 s.append(indent(4) + "> Job Bonus: +" + (int)(100 * AmountCalculator.totalJobPercentBonus[resourceNumber]) + "%" + "<br>");
             }
@@ -206,28 +222,38 @@ public class Formatting {
     }
     public static String scienceTooltip(int scienceNumber){
         StringBuffer s = new StringBuffer();
-        s.append("<html>" + sizeToolTip(Globals.ALL_SCIENCES[scienceNumber].getToolTipText(), 50) + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
-        for(int l = 0; l < Globals.ALL_SCIENCES[scienceNumber].getNumberOfResources(); l++){
-            if(Globals.ALL_RESOURCES[Globals.ALL_SCIENCES[scienceNumber].getOneRequired(l)].getAmount() < Globals.ALL_SCIENCES[scienceNumber].getOnePrice(l)){
-                s.append("<br>" + coloredMiddlePadding(Globals.ALL_RESOURCES[Globals.ALL_SCIENCES[scienceNumber].getOneRequired(l)].getName() + 
-                     ": " , formatAmount(Globals.ALL_RESOURCES[Globals.ALL_SCIENCES[scienceNumber].getOneRequired(l)].getAmount()) +  "/" + formatAmount(Globals.ALL_SCIENCES[scienceNumber].getOnePrice(l)) + Utils.timeUntilCanResearchScience(scienceNumber, l), 50, "<font color=red>"));
+        Science science = Globals.ALL_SCIENCES[scienceNumber];
+
+        s.append("<html>" + sizeToolTip(science.getToolTipText(), 50) + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
+
+        for(int l = 0; l < science.getNumberOfResources(); l++){
+            Resource resource = Globals.ALL_RESOURCES[science.getOneRequired(l)];
+
+            if(resource.getAmount() < science.getOnePrice(l)){
+                s.append("<br>" + coloredMiddlePadding(resource.getName() +
+                     ": " , formatAmount(resource.getAmount()) +  "/" + formatAmount(science.getOnePrice(l)) +
+                        Utils.timeUntilCanResearchScience(scienceNumber, l), 50, "<font color=red>"));
             }
             else{
-                s.append("<br>" + middlePadding(Globals.ALL_RESOURCES[Globals.ALL_SCIENCES[scienceNumber].getOneRequired(l)].getName() + 
-                     ": ", formatAmount(Globals.ALL_SCIENCES[scienceNumber].getOnePrice(l)) + Utils.timeUntilCanResearchScience(scienceNumber, l), 50));
+                s.append("<br>" + middlePadding(resource.getName() +
+                     ": ", formatAmount(science.getOnePrice(l)) +
+                        Utils.timeUntilCanResearchScience(scienceNumber, l), 50));
             }
         }
         return s + "<html>";
     }
     public static String makeJobToolTip(int jobNumber){
         StringBuffer s = new StringBuffer();
-        s.append(sizeToolTip(Globals.ALL_JOBS[jobNumber].getToolTipText(), 50));
-        s.append("<br>" + "_____________________________________________" + "<br>" + "<br>" + "Effects:" + "<br>" + "<font color=gray>");
+        Job job = Globals.ALL_JOBS[jobNumber];
+
+        s.append(sizeToolTip(job.getToolTipText(), 50));
+        s.append("<br>" + "_____________________________________________" +
+                "<br>" + "<br>" + "Effects:" + "<br>" + "<font color=gray>");
         
-        for(int i = 0; i < Globals.ALL_JOBS[jobNumber].getNumberOfEffects(); i++){
-            s.append(Globals.ALL_JOBS[jobNumber].getOneEffect(i).getStringEffect() + "<br>");
+        for(int i = 0; i < job.getNumberOfEffects(); i++){
+            s.append(job.getOneEffect(i).getStringEffect() + "<br>");
         }
-        if(Globals.ALL_JOBS[jobNumber].getIdentifier() == 'h'){
+        if(job.getIdentifier() == 'h'){
             s.append("+1 Hunting Point/sec");
         }
         
@@ -235,44 +261,59 @@ public class Formatting {
     }
     public static String magicTooltip(int magicNumber){
         StringBuffer s = new StringBuffer();
-        s.append("<html>" + Globals.ALL_MAGIC[magicNumber].getToolTipText() + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
+        Magic magic = Globals.ALL_MAGIC[magicNumber];
+
+        s.append("<html>" + magic.getToolTipText() + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
         
-        for(int l = 0; l < Globals.ALL_MAGIC[magicNumber].getNumberOfResources(); l++){
-            if(Globals.ALL_RESOURCES[Globals.ALL_MAGIC[magicNumber].getOneRequired(l)].getAmount() < Globals.ALL_MAGIC[magicNumber].getOnePrice(l)){
-                s.append("<br>" + coloredMiddlePadding(Globals.ALL_RESOURCES[Globals.ALL_MAGIC[magicNumber].getOneRequired(l)].getName() + 
-                     ": ", formatAmount(Globals.ALL_RESOURCES[Globals.ALL_MAGIC[magicNumber].getOneRequired(l)].getAmount()) + "/" + formatAmount(Globals.ALL_MAGIC[magicNumber].getOnePrice(l)) + Utils.timeUntilCanResearchMagic(magicNumber, l), 50, "<font color=red>"));   
+        for(int l = 0; l < magic.getNumberOfResources(); l++){
+            Resource resource = Globals.ALL_RESOURCES[magic.getOneRequired(l)];
+
+            if(resource.getAmount() < magic.getOnePrice(l)){
+                s.append("<br>" + coloredMiddlePadding(resource.getName() +
+                     ": ", formatAmount(resource.getAmount()) + "/" + formatAmount(magic.getOnePrice(l))
+                        + Utils.timeUntilCanResearchMagic(magicNumber, l), 50, "<font color=red>"));
             }
             else{
-                s.append("<br>" + middlePadding(Globals.ALL_RESOURCES[Globals.ALL_MAGIC[magicNumber].getOneRequired(l)].getName() + 
-                     ": " ,formatAmount(Globals.ALL_MAGIC[magicNumber].getOnePrice(l)) + Utils.timeUntilCanResearchMagic(magicNumber, l), 50)); 
+                s.append("<br>" + middlePadding(resource.getName() +
+                     ": " ,formatAmount(magic.getOnePrice(l)) +
+                        Utils.timeUntilCanResearchMagic(magicNumber, l), 50));
             }    
         }
         return s + "<html>";
     }
     public static String craftableResourceTooltip(int resourceNumber){
         StringBuffer s = new StringBuffer();
+        CraftableResource craftableResource = Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber];
                 
-        s.append("<html>" + sizeToolTip(Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber].getToolTipText(), 50) + "<br>" + "<br>" + "Cost:");
-        for(int l = 0; l < Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber].getNumberOfResources(); l++){
-            s.append("<br>" + middlePadding(padWithSpaces(Globals.ALL_RESOURCES[Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber].getOneRequired(l)].getName() + 
-                     ": " + formatAmount(Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber].getOnePrice(l)), 30), Utils.timeUntilCanCraftResource(resourceNumber, l), 50));
+        s.append("<html>" + sizeToolTip(craftableResource.getToolTipText(), 50) + "<br>" + "<br>" + "Cost:");
+        for(int l = 0; l < craftableResource.getNumberOfResources(); l++){
+            Resource resource = Globals.ALL_RESOURCES[craftableResource.getOneRequired(l)];
+
+            s.append("<br>" + middlePadding(padWithSpaces(resource.getName() +
+                     ": " + formatAmount(craftableResource.getOnePrice(l)), 30),
+                    Utils.timeUntilCanCraftResource(resourceNumber, l), 50));
         }
         return s + "<html>";
     }
     public static String createCraftToolTip(int resourceNumber, int amount){
         StringBuffer s = new StringBuffer();
+        CraftableResource craftableResource = Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber];
         
         s.append("Cost: " + "<br>");
         
-        for(int i = 0; i < Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber].getNumberOfResources(); i++){
-            s.append(Globals.ALL_RESOURCES[Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber].getOneRequired(i)].getName() + ": ");
-            s.append(formatAmount(Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber].getOnePrice(i) * amount) + "<br>");
+        for(int i = 0; i < craftableResource.getNumberOfResources(); i++){
+            Resource resource = Globals.ALL_RESOURCES[craftableResource.getOneRequired(i)];
+
+            s.append(resource.getName() + ": ");
+            s.append(formatAmount(craftableResource.getOnePrice(i) * amount) + "<br>");
         }
         return "<html>" + s + "<html>";
     }
     public static String formatCraftableResourceName(int resourceNumber){
         StringBuffer s = new StringBuffer();
-        s.append(Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber].getName() + ": " + formatAmount(Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber].getAmount()));
+        CraftableResource craftableResource = Globals.ALL_CRAFTABLE_RESOURCES[resourceNumber];
+
+        s.append(craftableResource.getName() + ": " + formatAmount(craftableResource.getAmount()));
         
         if(Globals.AMOUNT_PER_SECOND_CRAFTABLE[resourceNumber] > 0){
             s.append(" (+" + formatAmount(Globals.AMOUNT_PER_SECOND_CRAFTABLE[resourceNumber]) + Utils.checkToSmall(Globals.AMOUNT_PER_SECOND_CRAFTABLE[resourceNumber]) + ")/sec");
@@ -288,31 +329,39 @@ public class Formatting {
     }
     public static String upgradeToolTip(int upgradeNumber){
         StringBuffer s = new StringBuffer();
+        Upgrade upgrade = Globals.ALL_UPGRADES[upgradeNumber];
         
-        s.append(sizeToolTip("<html>" + Globals.ALL_UPGRADES[upgradeNumber].getToolTipText(), 50) + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
-        for(int l = 0; l < Globals.ALL_UPGRADES[upgradeNumber].getNumberOfResources(); l++){
-            if(!Globals.ALL_UPGRADES[upgradeNumber].getOneResourceCraftable(l)){
-                if(Globals.ALL_RESOURCES[Globals.ALL_UPGRADES[upgradeNumber].getOneRequired(l)].getAmount() < Globals.ALL_UPGRADES[upgradeNumber].getOnePrice(l)){
-                    s.append("<br>" + coloredMiddlePadding(Globals.ALL_RESOURCES[Globals.ALL_UPGRADES[upgradeNumber].getOneRequired(l)].getName() 
-                                + ": ", formatAmount(Globals.ALL_RESOURCES[Globals.ALL_UPGRADES[upgradeNumber].getOneRequired(l)].getAmount()) + "/" + 
-                                        formatAmount(Globals.ALL_UPGRADES[upgradeNumber].getOnePrice(l)) + Utils.timeUntilCanResearchUpgrade(upgradeNumber, l), 50, "<font color=red>" ));
+        s.append(sizeToolTip("<html>" + upgrade.getToolTipText(), 50) +
+                "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
+
+        for(int l = 0; l < upgrade.getNumberOfResources(); l++){
+            if(!upgrade.getOneResourceCraftable(l)){
+                Resource resource = Globals.ALL_RESOURCES[upgrade.getOneRequired(l)];
+
+                if(resource.getAmount() < upgrade.getOnePrice(l)){
+                    s.append("<br>" + coloredMiddlePadding(resource.getName()
+                            + ": ", formatAmount(resource.getAmount()) + "/" +
+                                        formatAmount(upgrade.getOnePrice(l)) +
+                            Utils.timeUntilCanResearchUpgrade(upgradeNumber, l), 50, "<font color=red>" ));
                 }
                 else{
-                    s.append("<br>" + middlePadding(Globals.ALL_RESOURCES[Globals.ALL_UPGRADES[upgradeNumber].getOneRequired(l)].getName() 
-                                + ": ", formatAmount(Globals.ALL_UPGRADES[upgradeNumber].getOnePrice(l)) + Utils.timeUntilCanResearchUpgrade(upgradeNumber, l), 50));
+                    s.append("<br>" + middlePadding(resource.getName()
+                                + ": ", formatAmount(upgrade.getOnePrice(l)) +
+                            Utils.timeUntilCanResearchUpgrade(upgradeNumber, l), 50));
                 }
             }
             else{
-                s.append("<br>" + (padWithSpaces(Globals.ALL_CRAFTABLE_RESOURCES[Globals.ALL_UPGRADES[upgradeNumber].getOneRequired(l)].getName() 
-                            + ": " + formatAmount(Globals.ALL_UPGRADES[upgradeNumber].getOnePrice(l)), 50)));
+                CraftableResource craftableResource = Globals.ALL_CRAFTABLE_RESOURCES[upgrade.getOneRequired(l)];
+
+                s.append("<br>" + (padWithSpaces(craftableResource.getName()
+                            + ": " + formatAmount(upgrade.getOnePrice(l)), 50)));
             }
         }
         
         s.append("<br>" + "_____________________________________________" + "<br>" + "<br>" + "Effects:" + "<br>" + "<font color=light_gray>");
         
-        for(int i = 0; i < Globals.ALL_UPGRADES[upgradeNumber].getNumberOfEffects(); i++){
-            System.out.println(Globals.ALL_UPGRADES[upgradeNumber].getOneEffect(i).getStringEffect());
-            s.append(Globals.ALL_UPGRADES[upgradeNumber].getOneEffect(i).getStringEffect() + "<br>");
+        for(int i = 0; i < upgrade.getNumberOfEffects(); i++){
+            s.append(upgrade.getOneEffect(i).getStringEffect() + "<br>");
         }
         
         s.append("</font>");
@@ -321,21 +370,22 @@ public class Formatting {
     }
     public static String createMagicEffectToolTip(int effectNumber){
         StringBuffer s = new StringBuffer();
+        MagicEffect magicEffect = Globals.ALL_MAGIC_EFFECTS[effectNumber];
         
-        s.append(sizeToolTip(Globals.ALL_MAGIC_EFFECTS[effectNumber].getToolTipText(), 50) + "<br>" );
+        s.append(sizeToolTip(magicEffect.getToolTipText(), 50) + "<br>" );
         
-        if(Globals.ALL_MAGIC_EFFECTS[effectNumber].getEnablable() && Globals.ALL_MAGIC_EFFECTS[effectNumber].getEnabled()){
+        if(magicEffect.getEnablable() && magicEffect.getEnabled()){
             s.append("<br>" + "Click to disable" + "<br>");
         }
-        else if(Globals.ALL_MAGIC_EFFECTS[effectNumber].getEnablable() && !Globals.ALL_MAGIC_EFFECTS[effectNumber].getEnabled()){
+        else if(magicEffect.getEnablable() && !magicEffect.getEnabled()){
             s.append("<br>" + "Click to enable" + "<br>");
         }
         
         s.append("_____________________________________________" + "<br>" +  "<br>" + "Effects:" + "<br>");
         
         
-        for(int i = 0; i < Globals.ALL_MAGIC_EFFECTS[effectNumber].getEffects().length; i++){
-            s.append(Globals.ALL_MAGIC_EFFECTS[effectNumber].getOneEffect(i).getStringEffect() + "<br>");
+        for(int i = 0; i < magicEffect.getEffects().length; i++){
+            s.append(magicEffect.getOneEffect(i).getStringEffect() + "<br>");
         }
         
         return "<html>" + s + "<html>";
