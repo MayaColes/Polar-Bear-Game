@@ -311,6 +311,7 @@ public class Formatting {
         s.append("<br>" + "_____________________________________________" + "<br>" + "<br>" + "Effects:" + "<br>" + "<font color=light_gray>");
         
         for(int i = 0; i < Globals.ALL_UPGRADES[upgradeNumber].getNumberOfEffects(); i++){
+            System.out.println(Globals.ALL_UPGRADES[upgradeNumber].getOneEffect(i).getStringEffect());
             s.append(Globals.ALL_UPGRADES[upgradeNumber].getOneEffect(i).getStringEffect() + "<br>");
         }
         
@@ -334,7 +335,7 @@ public class Formatting {
         
         
         for(int i = 0; i < Globals.ALL_MAGIC_EFFECTS[effectNumber].getEffects().length; i++){
-            s.append(Globals.ALL_MAGIC_EFFECTS[effectNumber].getOneEffect(i) + "<br>");
+            s.append(Globals.ALL_MAGIC_EFFECTS[effectNumber].getOneEffect(i).getStringEffect() + "<br>");
         }
         
         return "<html>" + s + "<html>";

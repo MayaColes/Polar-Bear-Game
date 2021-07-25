@@ -117,15 +117,15 @@ public class AmountCalculator {
         for(int i = 0; i < Globals.NUMBER_OF_MAGIC_EFFECTS; i++){
             if(Globals.ALL_MAGIC_EFFECTS[i].getEnablable() && Globals.ALL_MAGIC_EFFECTS[i].getEnabled()){
                 for(int j = 0; j < Globals.ALL_MAGIC_EFFECTS[i].getEffects().length; j++){
-                    if(Globals.ALL_MAGIC_EFFECTS[i].getOneEffectsWhatObjectType(j) == Globals.RESOURCE_IDENTIFIER &&
-                       Globals.ALL_MAGIC_EFFECTS[i].getOneTypeOfEffect(j) == Globals.POSITIVE_PRODUCTION_IDENTIFIER){
+                    if(Globals.ALL_MAGIC_EFFECTS[i].getOneEffect(j).getEffectsWhatObjectType() == Globals.RESOURCE_IDENTIFIER &&
+                       Globals.ALL_MAGIC_EFFECTS[i].getOneEffect(j).getTypeOfEffect() == Globals.POSITIVE_PRODUCTION_IDENTIFIER){
                     
-                        totalPositiveResourceProduction[Globals.ALL_MAGIC_EFFECTS[i].getOneEffectsWhichResource(j)] += Globals.ALL_MAGIC_EFFECTS[i].getOneEffectAmount(j);
+                        totalPositiveResourceProduction[Globals.ALL_MAGIC_EFFECTS[i].getOneEffect(j).getEffectsWhatResource()] += Globals.ALL_MAGIC_EFFECTS[i].getOneEffect(j).getEffectAmount();
                     }
-                    else if(Globals.ALL_MAGIC_EFFECTS[i].getOneEffectsWhatObjectType(j) == Globals.RESOURCE_IDENTIFIER &&
-                            Globals.ALL_MAGIC_EFFECTS[i].getOneTypeOfEffect(j) == Globals.NEGATIVE_PRODUCTION_IDENTIFIER){
+                    else if(Globals.ALL_MAGIC_EFFECTS[i].getOneEffect(j).getEffectsWhatObjectType() == Globals.RESOURCE_IDENTIFIER &&
+                            Globals.ALL_MAGIC_EFFECTS[i].getOneEffect(j).getTypeOfEffect() == Globals.NEGATIVE_PRODUCTION_IDENTIFIER){
                     
-                        totalNegativeResourceProduction[Globals.ALL_MAGIC_EFFECTS[i].getOneEffectsWhichResource(j)] += Globals.ALL_MAGIC_EFFECTS[i].getOneEffectAmount(j);
+                        totalNegativeResourceProduction[Globals.ALL_MAGIC_EFFECTS[i].getOneEffect(j).getEffectsWhatResource()] += Globals.ALL_MAGIC_EFFECTS[i].getOneEffect(j).getEffectAmount();
                     }
                 }
             }

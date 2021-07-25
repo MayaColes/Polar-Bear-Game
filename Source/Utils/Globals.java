@@ -3,18 +3,6 @@ import GameObjects.*;
 import Windows.GameWindow;
 
 public class Globals {
-    public static final int NUMBER_OF_BUILDINGS = 14;
-    public static final int NUMBER_OF_RESOURCES = 12;
-    public static final int NUMBER_OF_CRAFTABLE_RESOURCES = 7;
-    public static final int NUMBER_OF_TECHNOLOGIES = 11;
-    public static final int NUMBER_OF_JOBS = 8;
-    public static final int NUMBER_OF_MAGICS = 3;
-    public static final int NUMBER_OF_MAGIC_EFFECTS = 3;
-    public static final int NUMBER_OF_UPGRADES = 5;
-    public static final int NUMBER_OF_CIVILIZATIONS = 2;
-    public static final int RECORD_LEN = 8;
-    public static final int RATIO_LEN = 2;
-    
     public static String SAVE_FILE = "_Save.dat";
     public static final String CONFIG_FILE = "_Config.dat";
     
@@ -69,18 +57,29 @@ public class Globals {
     public static final String[] FIRST_NAMES = new String[]{"Snowy", "Fluffy"};
     public static final String[] LAST_NAMES = new String[]{"Paws", "Hunter"};
     
+    public static Building[] ALL_BUILDINGS;
+    public static Resource[] ALL_RESOURCES;
+    public static Science[] ALL_SCIENCES;
+    public static Job[] ALL_JOBS;
+    public static Magic[] ALL_MAGIC;
+    public static MagicEffect[] ALL_MAGIC_EFFECTS;
+    public static CraftableResource[] ALL_CRAFTABLE_RESOURCES;
+    public static Upgrade[] ALL_UPGRADES;
+    public static Civilization[] ALL_CIVILIZATIONS;
+
+    public static final int NUMBER_OF_BUILDINGS = 14;
+    public static final int NUMBER_OF_RESOURCES = 12;
+    public static final int NUMBER_OF_CRAFTABLE_RESOURCES = 7;
+    public static final int NUMBER_OF_TECHNOLOGIES = 11;
+    public static final int NUMBER_OF_JOBS = 8;
+    public static final int NUMBER_OF_MAGICS = 3;
+    public static final int NUMBER_OF_MAGIC_EFFECTS = 3;
+    public static final int NUMBER_OF_UPGRADES = 5;
+    public static final int NUMBER_OF_CIVILIZATIONS = 2;
+    public static final int RECORD_LEN = 8;
+
     public static double[] AMOUNT_PER_SECOND = new double[NUMBER_OF_RESOURCES];
     public static double[] AMOUNT_PER_SECOND_CRAFTABLE = new double[NUMBER_OF_CRAFTABLE_RESOURCES];
-    
-    public static Building[] ALL_BUILDINGS = new Building[NUMBER_OF_BUILDINGS];
-    public static Resource[] ALL_RESOURCES = new Resource[NUMBER_OF_RESOURCES];
-    public static Science[] ALL_SCIENCES = new Science[NUMBER_OF_TECHNOLOGIES];
-    public static Job[] ALL_JOBS = new Job[NUMBER_OF_JOBS];
-    public static Magic[] ALL_MAGIC = new Magic[NUMBER_OF_MAGICS];
-    public static MagicEffect[] ALL_MAGIC_EFFECTS = new MagicEffect[NUMBER_OF_MAGIC_EFFECTS];
-    public static CraftableResource[] ALL_CRAFTABLE_RESOURCES = new CraftableResource[NUMBER_OF_CRAFTABLE_RESOURCES];
-    public static Upgrade[] ALL_UPGRADES = new Upgrade[NUMBER_OF_UPGRADES];
-    public static Civilization[] ALL_CIVILIZATIONS = new Civilization[NUMBER_OF_CIVILIZATIONS];
     
     public static int END_OF_LAST_CONFIG = -1;
     public static int WIDTH_OF_SCREEN = 0;

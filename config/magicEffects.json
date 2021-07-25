@@ -4,30 +4,28 @@
     "toolTipText": "Turn your extra berries into wood.",
     "dependancy": 1,
     "enablable": false,
-    "typeOfEffect": [
-      "-",
-      "-",
-      "+"
-    ],
-    "effectAmount": [
-      1000.0,
-      5.0,
-      50.0
-    ],
-    "effectsWhatObjectType": [
-      "r",
-      "r",
-      "r"
-    ],
-    "effectsWhichObject": [
-      0,
-      8,
-      1
-    ],
-    "effectsWhichResource": [
-      0,
-      8,
-      1
+    "effects": [
+      {
+        "typeOfEffect": "-",
+        "effectAmount": 1000.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 0,
+        "effectsWhatResource": 0
+      },
+      {
+        "typeOfEffect": "-",
+        "effectAmount": 5.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 8,
+        "effectsWhatResource": 8
+      },
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 50.0,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 1,
+        "effectsWhatResource": 1
+      }
     ]
   },
   {
@@ -35,20 +33,14 @@
     "toolTipText": "Use dustomancy to lower the likelihood of a snowstorm blowing through your village.",
     "dependancy": 0,
     "enablable": true,
-    "typeOfEffect": [
-      "-"
-    ],
-    "effectAmount": [
-      0.04
-    ],
-    "effectsWhatObjectType": [
-      "r"
-    ],
-    "effectsWhichObject": [
-      8
-    ],
-    "effectsWhichResource": [
-      8
+    "effects": [
+      {
+        "typeOfEffect": "-",
+        "effectAmount": 0.04,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 8,
+        "effectsWhatResource": 8
+      }
     ]
   },
   {
@@ -56,25 +48,21 @@
     "toolTipText": "Use magic to fuel your bonfires instead of wood.",
     "dependancy": 2,
     "enablable": true,
-    "typeOfEffect": [
-      "+",
-      "-"
-    ],
-    "effectAmount": [
-      0.1,
-      0.05
-    ],
-    "effectsWhatObjectType": [
-      "b",
-      "r"
-    ],
-    "effectsWhichObject": [
-      7,
-      8
-    ],
-    "effectsWhichResource": [
-      1,
-      8
+    "effects": [
+      {
+        "typeOfEffect": "+",
+        "effectAmount": 0.1,
+        "effectsWhatObjectType": "b",
+        "effectsWhatObject": 7,
+        "effectsWhatResource": 1
+      },
+      {
+        "typeOfEffect": "-",
+        "effectAmount": 0.05,
+        "effectsWhatObjectType": "r",
+        "effectsWhatObject": 8,
+        "effectsWhatResource": 8
+      }
     ]
   }
 ]

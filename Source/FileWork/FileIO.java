@@ -1,5 +1,7 @@
 package FileWork;
 import Utils.Globals;
+import com.google.gson.Gson;
+import GameObjects.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -7,7 +9,8 @@ import java.awt.Graphics2D;
 
 public class FileIO {
     private static RandomAccessFile f = null;
-    private static RandomAccessFile c = null;
+    private static Reader[] c = null;
+    private static File config = null;
     
     public static void openSaveFile(){
         File saveFile = new File(Globals.SAVE_FILE);
@@ -24,16 +27,15 @@ public class FileIO {
         catch(IOException e){
         }
     }
-    public static void openConfigFile(){
+    public static void openConfigFiles(){
         try{
-            c = new RandomAccessFile(Globals.CONFIG_FILE, "rw");
-        }
-        catch(IOException e){
-        }
-    }
-    public static void closeConfigFile(){
-        try{
-            c.close();
+            config = new File(System.getProperty("user.dir"), "config");
+            File[] configFiles = config.listFiles();
+            c = new FileReader[configFiles.length];
+
+            for(int i = 0; i < configFiles.length; i++){
+                c[i] = new FileReader(configFiles[i]);
+            }
         }
         catch(IOException e){
         }
@@ -47,17 +49,37 @@ public class FileIO {
             return 0;
         }
     }
-    public static void readFromConfigFile(){
-        try{
-            StringBuffer s = new StringBuffer();
-            String d = c.readLine();
-            while(d!= null){
-                s.append(d);
-                d = c.readLine();
+    public static void readFromConfigFiles(){
+        Gson gson = new Gson();
+        for(int i = 0; i < c.length; i++){
+            String fileName = config.listFiles()[i].getName();
+            if(fileName.equals("buildings.json")){
+                Globals.ALL_BUILDINGS = gson.fromJson(c[i], Building[].class);
             }
-            Globals.CONFIG = s + "";
-        }
-        catch(IOException e){
+            else if(fileName.equals("civilizations.json")){
+                Globals.ALL_CIVILIZATIONS = gson.fromJson(c[i], Civilization[].class);
+            }
+            else if(fileName.equals("craftableResources.json")){
+                Globals.ALL_CRAFTABLE_RESOURCES = gson.fromJson(c[i], CraftableResource[].class);
+            }
+            else if(fileName.equals("jobs.json")){
+                Globals.ALL_JOBS = gson.fromJson(c[i], Job[].class);
+            }
+            else if(fileName.equals("magicEffects.json")){
+                Globals.ALL_MAGIC_EFFECTS = gson.fromJson(c[i], MagicEffect[].class);
+            }
+            else if(fileName.equals("magics.json")){
+                Globals.ALL_MAGIC = gson.fromJson(c[i], Magic[].class);
+            }
+            else if(fileName.equals("resources.json")){
+                Globals.ALL_RESOURCES = gson.fromJson(c[i], Resource[].class);
+            }
+            else if(fileName.equals("sciences.json")){
+                Globals.ALL_SCIENCES = gson.fromJson(c[i], Science[].class);
+            }
+            else if(fileName.equals("upgrades.json")){
+                Globals.ALL_UPGRADES = gson.fromJson(c[i], Upgrade[].class);
+            }
         }
     }
     public static void writeToSaveFile(double i, int j){

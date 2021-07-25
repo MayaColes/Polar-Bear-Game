@@ -10,7 +10,6 @@ public class Upgrade extends Buildable{
     private String toolTipText;
     private ArrayList<Effect> effects;
     private boolean scienceDependancy;
-    private transient String config;
     
     public Upgrade(){
         researched = true;
@@ -18,55 +17,14 @@ public class Upgrade extends Buildable{
         visible = false;
         toolTipText = "";
     }
-    public void initializeIdentifier(){
-        super.intitializeIdentifier(Initialize.buildFromConfig());
-    }
     public void initializeUpgrade(boolean r){
-        
-        super.initialize();
-        config = super.getConfig();
-        
-        researched = false;
-        
-        if(super.getDependancy().charAt(0) == 's'){
-            scienceDependancy = true;
-            char n = super.getDependancy().charAt(1);
-            for(int i = 0; i < Globals.NUMBER_OF_TECHNOLOGIES; i++){
-                if (n == Globals.ALL_SCIENCES[i].getIdentifier()){
-                    dependancy = i;
-                }
-                else if (n == '-'){
-                    dependancy = -1;
-                }
-            }
-            
-        }
-        else{
-            scienceDependancy = false;
-            char n = super.getDependancy().charAt(1);
-            for(int i = 0; i < Globals.NUMBER_OF_MAGICS; i++){
-                if (n == Globals.ALL_MAGIC[i].getIdentifier()){
-                    dependancy = i;
-                }
-            }
-        }
-        
+        researched = r;
         checkVisible();
-        
-        int numberOfEffects = Integer.parseInt("" + config.charAt(0));
-        effects = new ArrayList(0);
-        
-        config = config.substring(1);
-        
-        for(int i = 0; i < numberOfEffects; i++){
-            Effect effect = new Effect();
-            effect.createEffect(config.substring(0, config.indexOf(Globals.END_OF_EFFECT_MARKER) + 1));
-            effects.add(effect);
-            
-            config = config.substring(config.indexOf(Globals.END_OF_EFFECT_MARKER) + 1);
+        checkEffects();
+
+        for(int i = 0; i < effects.size(); i++){
+            effects.get(i).initializeEffect();
         }
-        
-        toolTipText = config.substring(0, config.indexOf(Globals.END_OF_RECORD_MARKER));
     }
     public void researchUpgrade(){
         if(checkIfBuildable()){

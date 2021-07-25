@@ -6,6 +6,7 @@ import Windows.GameWindow;
 import Windows.SaveFileChooser;
 import FileWork.FileIO;
 import FileWork.Save;
+import GameObjects.*;
 
 public class Initialize {
     private static int[] numberOfBuildingsBuilt = new int[Globals.NUMBER_OF_BUILDINGS];
@@ -27,8 +28,8 @@ public class Initialize {
         SaveFileChooser s = new SaveFileChooser();
     }
     public static void initializeGame(){
-        initializeSaveFile();
         initializeConfig();
+        initializeSaveFile();
         AmountCalculator.calculateMaximums();
         AmountCalculator.calculateProductionPerTurn();
         
@@ -292,33 +293,9 @@ public class Initialize {
             }
             Globals.FIRST_TIME = true;
         }
-    }
-    public static void initializeConfig(){
-        FileIO.openConfigFile();
-        FileIO.readFromConfigFile();
-        for(int k = 0;  k < Globals.NUMBER_OF_RESOURCES; k++){
-            Globals.ALL_RESOURCES[k] = new GameObjects.Resource();
-            Globals.ALL_RESOURCES[k].initializeIdentifier();
-        }
-        for(int j = 0; j < Globals.NUMBER_OF_CRAFTABLE_RESOURCES; j++){
-            Globals.ALL_CRAFTABLE_RESOURCES[j] = new GameObjects.CraftableResource();
-            Globals.ALL_CRAFTABLE_RESOURCES[j].initializeIdentifier();
-        }
-        for(int j = 0; j < Globals.NUMBER_OF_JOBS; j++){
-            Globals.ALL_JOBS[j] = new GameObjects.Job();
-            Globals.ALL_JOBS[j].initializeIdentifier();
-        }
-        for (int j = 0; j < Globals.NUMBER_OF_BUILDINGS; j++){
-            Globals.ALL_BUILDINGS[j] = new GameObjects.Building();
-            Globals.ALL_BUILDINGS[j].initializeIdentifier();
-        } 
-        for(int j = 0; j < Globals.NUMBER_OF_TECHNOLOGIES; j++){
-            Globals.ALL_SCIENCES[j] = new GameObjects.Science();
-            Globals.ALL_SCIENCES[j].initializeIdentifier();
-        }
-        for(int j = 0; j < Globals.NUMBER_OF_MAGICS; j++){
-            Globals.ALL_MAGIC[j] = new GameObjects.Magic();
-            Globals.ALL_MAGIC[j].initializeIdentifier();
+
+        for(int i = 0; i < Globals.NUMBER_OF_BUILDINGS; i++){
+            Globals.ALL_BUILDINGS[i].initializeBuilding(numberOfBuildingsBuilt[i], numberEnabled[i]);
         }
         for(int k = 0;  k < Globals.NUMBER_OF_RESOURCES; k++){
             Globals.ALL_RESOURCES[k].initializeResource(amountOfResource[k], resourceVisible[k]);
@@ -329,9 +306,6 @@ public class Initialize {
         for(int j = 0; j < Globals.NUMBER_OF_JOBS; j++){
             Globals.ALL_JOBS[j].initializeJob(numberWorking[j]);
         }
-        for (int j = 0; j < Globals.NUMBER_OF_BUILDINGS; j++){
-            Globals.ALL_BUILDINGS[j].initializeBuilding(numberOfBuildingsBuilt[j], numberEnabled[j]);
-        } 
         for(int j = 0; j < Globals.NUMBER_OF_TECHNOLOGIES; j++){
             Globals.ALL_SCIENCES[j].initalizeScience(scienceResearched[j]);
         }
@@ -339,22 +313,18 @@ public class Initialize {
             Globals.ALL_MAGIC[j].initalizeMagic(magicResearched[j]);
         }
         for(int j = 0; j < Globals.NUMBER_OF_MAGIC_EFFECTS; j++){
-            Globals.ALL_MAGIC_EFFECTS[j] = new GameObjects.MagicEffect();
             Globals.ALL_MAGIC_EFFECTS[j].initializeMagicEffect();
         }
         for(int j = 0; j < Globals.NUMBER_OF_UPGRADES; j++){
-            Globals.ALL_UPGRADES[j] = new GameObjects.Upgrade();
-            Globals.ALL_UPGRADES[j].initializeIdentifier();
             Globals.ALL_UPGRADES[j].initializeUpgrade(upgradeResearched[j]);
         }
         for(int j = 0; j < Globals.NUMBER_OF_CIVILIZATIONS; j++){
-            Globals.ALL_CIVILIZATIONS[j] = new GameObjects.Civilization();
             Globals.ALL_CIVILIZATIONS[j].initializeCivilization(civilizationStandings[j], civilizationRevealed[j]);
         }
-        for(int j = 0; j < Globals.NUMBER_OF_CRAFTABLE_RESOURCES; j++){
-            Globals.ALL_CRAFTABLE_RESOURCES[j].checkCraftable();
-        }
-        FileIO.closeConfigFile();
+    }
+    public static void initializeConfig(){
+        FileIO.openConfigFiles();
+        FileIO.readFromConfigFiles();
     }
     public static String buildFromConfig(){
         int index = Globals.END_OF_LAST_CONFIG;

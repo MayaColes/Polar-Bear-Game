@@ -18,7 +18,7 @@
     "name": "Igloo",
     "identifier": "i",
     "resourcesRequired": [
-      3
+      "I"
     ],
     "price": [
       10.0
@@ -46,7 +46,7 @@
     "name": "Berry Field",
     "identifier": "b",
     "resourcesRequired": [
-      0
+      "b"
     ],
     "price": [
       10.0
@@ -81,7 +81,7 @@
     "name": "Library",
     "identifier": "l",
     "resourcesRequired": [
-      1
+      "w"
     ],
     "price": [
       20.0
@@ -116,7 +116,7 @@
     "name": "Mine",
     "identifier": "m",
     "resourcesRequired": [
-      1
+      "w"
     ],
     "price": [
       50.0
@@ -158,7 +158,7 @@
     "name": "Bonfire",
     "identifier": "B",
     "resourcesRequired": [
-      1
+      "w"
     ],
     "price": [
       10.0
@@ -193,8 +193,8 @@
     "name": "Tower",
     "identifier": "t",
     "resourcesRequired": [
-      1,
-      5
+      "w",
+      "S"
     ],
     "price": [
       30.0,
@@ -259,7 +259,7 @@
     "name": "Storage Shed",
     "identifier": "s",
     "resourcesRequired": [
-      1
+      "w"
     ],
     "price": [
       30.0
@@ -301,7 +301,7 @@
     "name": "Smeltery",
     "identifier": "S",
     "resourcesRequired": [
-      5
+      "S"
     ],
     "price": [
       250.0
@@ -336,8 +336,8 @@
     "name": "School",
     "identifier": "c",
     "resourcesRequired": [
-      1,
-      5
+      "w",
+      "S"
     ],
     "price": [
       100.0,
@@ -367,8 +367,8 @@
     "name": "Tinkerer\u0027s Station",
     "identifier": "T",
     "resourcesRequired": [
-      1,
-      5
+      "w",
+      "S"
     ],
     "price": [
       50.0,
@@ -405,8 +405,8 @@
     "name": "Well",
     "identifier": "w",
     "resourcesRequired": [
-      5,
-      2
+      "S",
+      "b"
     ],
     "price": [
       300.0,
@@ -464,9 +464,9 @@
     "name": "Warehouse",
     "identifier": "W",
     "resourcesRequired": [
-      2,
-      3,
-      4
+      "b",
+      "B",
+      "i"
     ],
     "price": [
       3.0,
@@ -498,8 +498,8 @@
     "name": "Cabin",
     "identifier": "C",
     "resourcesRequired": [
-      1,
-      5
+      "w",
+      "S"
     ],
     "price": [
       120.0,
@@ -529,7 +529,7 @@
     "name": "Aquaduct",
     "identifier": "a",
     "resourcesRequired": [
-      5
+      "S"
     ],
     "price": [
       100.0

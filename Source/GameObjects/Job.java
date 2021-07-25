@@ -12,7 +12,6 @@ public class Job {
     private transient boolean visible;
     private char identifier;
     private ArrayList<Effect> effects;
-    private transient String config;
     
     public Job(){
         name = "";
@@ -27,35 +26,13 @@ public class Job {
         toolTipText = t;
         visible = v;
     }
-    public void initializeIdentifier(){
-        config = Initialize.buildFromConfig();
-        identifier = config.charAt(0);
-    }
     public void initializeJob(int w){
-        //System.out.println(s);
-        
-        name = config.substring(1, config.indexOf(Globals.END_OF_NAME_MARKER));
-        
         numberWorking = w;
-        
         visible = false;
-        
-        config = config.substring(config.indexOf(Globals.END_OF_NAME_MARKER) + 1);
-       
-        int numberOfEffects = Integer.parseInt(config.charAt(0) + "");
-        
-        effects = new ArrayList(0);
-        
-        config = config.substring(1);
-        
-        for(int i = 0; i < numberOfEffects; i++){
-            Effect effect = new Effect();
-            effect.createEffect(config.substring(0, config.indexOf(Globals.END_OF_EFFECT_MARKER) + 1));
-            effects.add(effect);
-            config = config.substring(config.indexOf(Globals.END_OF_EFFECT_MARKER) + 1);
+
+        for(int i = 0; i < effects.size(); i++){
+            effects.get(i).initializeEffect();
         }
-        
-        toolTipText = config.substring(0, config.indexOf(Globals.END_OF_RECORD_MARKER));
     }
     public void addEffect(char effectsWhichType, int whichObject, char effectType, double amount){
         if(effectType == Globals.POSITIVE_PRODUCTION_IDENTIFIER){

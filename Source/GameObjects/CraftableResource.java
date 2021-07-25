@@ -11,7 +11,6 @@ public class CraftableResource extends Buildable{
     private transient boolean visible;
     private int dependancy;
     private boolean scienceDependancy;
-    private transient String config;
     
     public CraftableResource(){
         amount = 0;
@@ -29,50 +28,10 @@ public class CraftableResource extends Buildable{
         dependancy = d;
         canCraft = b;
     }
-    public void initializeIdentifier(){
-        super.intitializeIdentifier(Initialize.buildFromConfig());
-    }
     public void initializeCraftableResource(double a, boolean v){
         amount = a;
-        
-        super.initialize();
-        config = super.getConfig();
-        
-        if(super.getDependancy().charAt(0) == 's'){
-            scienceDependancy = true;
-            char n = super.getDependancy().charAt(1);
-            for(int i = 0; i < Globals.NUMBER_OF_TECHNOLOGIES; i++){
-                if (n == Globals.ALL_SCIENCES[i].getIdentifier()){
-                    dependancy = i;
-                }
-                else if (n == '-'){
-                    dependancy = -1;
-                }
-            }
-            
-        }
-        else{
-            scienceDependancy = false;
-            char n = super.getDependancy().charAt(1);
-            for(int i = 0; i < Globals.NUMBER_OF_MAGICS; i++){
-                if (n == Globals.ALL_MAGIC[i].getIdentifier()){
-                    dependancy = i;
-                }
-            }
-        }
-        
-        if(config.charAt(0) == '1'){
-            canCraft = true;
-            
-            config = config.substring(config.indexOf(Globals.END_OF_NAME_MARKER) + 2);
-            
-            toolTipText = config.substring(0, config.indexOf(Globals.END_OF_RECORD_MARKER));
-        }
-        else{
-            canCraft = false;
-        }
-        
         visible = v;
+        checkCraftable();
     }
     public void craftResource(int numberToCraft){
         if(checkIfBuildable()){

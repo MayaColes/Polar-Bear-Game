@@ -11,7 +11,6 @@ public class Building extends Buildable{
     private ArrayList<Effect> effects;
     private boolean enablable;
     private transient int numberEnabled;
-    private transient String config;
     private boolean scienceDependancy;
     private int dependancy;
     private transient boolean buildable;
@@ -32,81 +31,23 @@ public class Building extends Buildable{
         enablable = e;
         numberEnabled = 0;
     }
-    public void initializeIdentifier(){
-        super.intitializeIdentifier(Initialize.buildFromConfig());
-    }
     public void initializeBuilding(int b, int e){
-        //System.out.println(s);
-        
-        super.initialize();
-        config = super.getConfig();
-        
-        numberBuilt = b;
-        
-        if(super.getDependancy().charAt(0) == 's'){
-            scienceDependancy = true;
-            char n = super.getDependancy().charAt(1);
-            for(int i = 0; i < Globals.NUMBER_OF_TECHNOLOGIES; i++){
-                if (n == Globals.ALL_SCIENCES[i].getIdentifier()){
-                    dependancy = i;
-                }
-                else if (n == '-'){
-                    dependancy = -1;
-                }
-            }
-            
-        }
-        else{
-            scienceDependancy = false;
-            char n = super.getDependancy().charAt(1);
-            for(int i = 0; i < Globals.NUMBER_OF_MAGICS; i++){
-                if (n == Globals.ALL_MAGIC[i].getIdentifier()){
-                    dependancy = i;
-                }
-            }
-        }
-        
-        int numberOfEffects = Integer.parseInt(config.charAt(0) + "");
-        
-        effects = new ArrayList(0);
-        
-        config = config.substring(1);
-        
-        for(int i = 0; i < numberOfEffects; i++){
-            Effect effect = new Effect();
-            effect.createEffect(config.substring(0, config.indexOf(Globals.END_OF_EFFECT_MARKER) + 1));
-            effects.add(effect);
-            config = config.substring(config.indexOf(Globals.END_OF_EFFECT_MARKER) + 1);
-        }
-        
-        sortEffects();
-        
-        if(config.charAt(0) == '1'){
-            enablable = true;
+        if(enablable){
             numberEnabled = e;
         }
         else{
-            enablable = false;
             numberEnabled = b;
         }
-        
-        increaseRatio = Double.parseDouble(config.substring(1, config.indexOf(Globals.END_OF_RATIO_MARKER)));
-        
+        numberBuilt = b;
+
+        for(int i = 0; i < effects.size(); i++){
+            effects.get(i).initializeEffect();
+        }
+
         for(int i = 0; i < b; i++){
             for(int j = 0; j < super.getNumberOfResources(); j++){
                 super.setOnePrice(j, super.getOnePrice(j) * increaseRatio);
             }
-        }
-        
-        config = config.substring(config.indexOf(Globals.END_OF_RATIO_MARKER) + 1);
-        
-        if(config.indexOf(Globals.END_OF_TOOLTIP_MARKER) == -1){
-            toolTipText = config.substring(0, config.indexOf(Globals.END_OF_RECORD_MARKER));
-            secondaryToolTip = "";
-        }
-        else{
-            toolTipText = config.substring(0, config.indexOf(Globals.END_OF_TOOLTIP_MARKER));
-            secondaryToolTip = config.substring(config.indexOf(Globals.END_OF_TOOLTIP_MARKER) + 1, config.indexOf(Globals.END_OF_RECORD_MARKER));
         }
     }
     public void buildBuilding(){

@@ -10,7 +10,6 @@ public class Resource {
     private transient boolean visible;
     private String color;
     private char identifier;
-    private transient String config;
     
     public Resource(){
         amount = 0;
@@ -29,11 +28,6 @@ public class Resource {
         visible = v;
         color = c;
     }
-    public void initializeIdentifier(){
-        config = Initialize.buildFromConfig();
-        
-        identifier = config.charAt(0);
-    }
     public void initializeResource(double a, boolean v){
         if(a >= 0){
             amount = a;
@@ -42,11 +36,6 @@ public class Resource {
             amount = 0;
         }
         visible = v;
-        
-        name = config.substring(1, config.indexOf(Globals.END_OF_NAME_MARKER));
-        color = config.substring(config.indexOf(Globals.END_OF_NAME_MARKER) + 1, config.indexOf(Globals.END_OF_COLOR_MARKER));
-        defaultMaximum = Integer.parseInt(config.substring(config.indexOf(Globals.END_OF_COLOR_MARKER) + 1,
-                  config.indexOf(Globals.END_OF_RECORD_MARKER)));
         maximum = defaultMaximum;
     }
     public void changeAmount(double a){

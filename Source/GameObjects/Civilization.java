@@ -42,44 +42,8 @@ public class Civilization {
         imageFile = "placeholder.jpg";
     }
     public void initializeCivilization(double standing, boolean r){
-        String s = Initialize.buildFromConfig();
-        
         raceStanding = standing;
         revealed = r;
-        
-        hostility = Integer.parseInt("" + s.charAt(0));
-        
-        name = s.substring(1, s.indexOf(Globals.END_OF_NAME_MARKER));
-        
-        imageFile = s.substring(s.indexOf(Globals.END_OF_NAME_MARKER) + 1, s.indexOf(Globals.END_OF_FILENAME_MARKER));
-        
-        tradeTime = Integer.parseInt(s.substring(s.indexOf(Globals.END_OF_FILENAME_MARKER) + 1, s.indexOf(Globals.END_OF_TIME_MARKER)));
-        
-        buysResource = Integer.parseInt(s.substring(s.indexOf(Globals.END_OF_TIME_MARKER) + 1, s.indexOf(Globals.END_OF_RESOURCE_MARKER)));
-        buyAmount = Integer.parseInt(s.substring(s.indexOf(Globals.END_OF_RESOURCE_MARKER) + 1, s.indexOf(Globals.END_OF_COST_MARKER)));
-        s = s.substring(s.indexOf(Globals.END_OF_COST_MARKER) + 1);
-        
-        sellResource = Integer.parseInt(s.substring(s.indexOf(Globals.END_OF_NAME_MARKER) + 1, s.indexOf(Globals.END_OF_RESOURCE_MARKER)));
-        defaultSellAmount = Integer.parseInt(s.substring(s.indexOf(Globals.END_OF_RESOURCE_MARKER) + 1, s.indexOf(Globals.END_OF_COST_MARKER)));
-        
-        s = s.substring(s.indexOf(Globals.END_OF_COST_MARKER) + 1);
-        
-        scienceFavour = Double.parseDouble(s.substring(0, s.indexOf(Globals.END_OF_FAVOUR_MARKER))) / 100;
-        s = s.substring(s.indexOf(Globals.END_OF_FAVOUR_MARKER) + 1);
-        
-        magicFavour = Double.parseDouble(s.substring(0, s.indexOf(Globals.END_OF_FAVOUR_MARKER))) / 100;
-        s = s.substring(s.indexOf(Globals.END_OF_FAVOUR_MARKER) + 1);
-        
-        warFavour = Double.parseDouble(s.substring(0, s.indexOf(Globals.END_OF_FAVOUR_MARKER))) / 100;
-        s = s.substring(s.indexOf(Globals.END_OF_FAVOUR_MARKER) + 1);
-        
-        populationFavour = Double.parseDouble(s.substring(0, s.indexOf(Globals.END_OF_FAVOUR_MARKER))) / 100;
-        s = s.substring(s.indexOf(Globals.END_OF_FAVOUR_MARKER) + 1);
-        
-        happinessFavour = Double.parseDouble(s.substring(0, s.indexOf(Globals.END_OF_FAVOUR_MARKER))) / 100;
-        s = s.substring(s.indexOf(Globals.END_OF_FAVOUR_MARKER) + 1);
-        
-        description = s.substring(0, s.indexOf(Globals.END_OF_RECORD_MARKER));
         
         checkStatus();
     }

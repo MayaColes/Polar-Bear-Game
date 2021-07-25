@@ -7,7 +7,6 @@ public class Science extends Buildable{
     private int dependancy;
     private String toolTipText;
     private transient boolean visible;
-    private transient String config;
     
     public Science(){
         isResearched = false;
@@ -21,29 +20,9 @@ public class Science extends Buildable{
         visible = v;
         toolTipText = "";
     }
-    public void initializeIdentifier(){
-        super.intitializeIdentifier(Initialize.buildFromConfig());
-    }
     public void initalizeScience(boolean i){
-        
         isResearched = i;
-        
-        super.initialize();
-        config = super.getConfig();
-        
-        char c = super.getDependancy().charAt(0);
-        for(int j = 0; j < Globals.NUMBER_OF_TECHNOLOGIES; j++){
-            if(c == Globals.ALL_SCIENCES[j].getIdentifier()){
-                dependancy = j;
-            }
-            else if(c == Globals.NO_DEPENDANCY_MARKER){
-                dependancy = -1;
-            }
-        }
-        
         checkVisible();
-        
-        toolTipText = config.substring(0, config.indexOf(Globals.END_OF_RECORD_MARKER));
     }
     public void researchScience(){
         if(checkIfBuildable()){
