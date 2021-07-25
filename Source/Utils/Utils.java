@@ -1,5 +1,6 @@
 package Utils;
 import java.math.*;
+import GameObjects.Buildable;
 
 public class Utils {
     private static int bearCounter = 0;
@@ -182,90 +183,18 @@ public class Utils {
             s.append(")");
         }
         return s + "";
-    } 
-    public static String timeUntilCanBuild(int buildingIndex, int resourceIndex){
-        long seconds = 0;
-        int resourceNeeded = Globals.ALL_BUILDINGS[buildingIndex].getOneRequired(resourceIndex);
-        double amountNeeded = Globals.ALL_BUILDINGS[buildingIndex].getOnePrice(resourceIndex) - 
-                              Globals.ALL_RESOURCES[resourceNeeded].getAmount();
-        
-        
-        if(Globals.AMOUNT_PER_SECOND[resourceNeeded] > 0){
-            seconds = (int)(amountNeeded / Globals.AMOUNT_PER_SECOND[resourceNeeded]);
-        }
-        
-        if(getTimeFromSeconds(seconds).equals("Now")){
-            return "";
-        }
-        else{
-            return "(" + getTimeFromSeconds(seconds) + ")";
-        }
     }
-    public static String timeUntilCanResearchScience(int scienceIndex, int resourceIndex){
+    public static String timeUntilCanBuildBuildable(Buildable buildable, int resourceIndex){
         long seconds = 0;
-        int resourceNeeded = Globals.ALL_SCIENCES[scienceIndex].getOneRequired(resourceIndex);
-        double amountNeeded = Globals.ALL_SCIENCES[scienceIndex].getOnePrice(resourceIndex) - 
-                              Globals.ALL_RESOURCES[resourceNeeded].getAmount();
-        
-        
+        int resourceNeeded = buildable.getOneRequired(resourceIndex);
+        double amountNeeded = buildable.getOnePrice(resourceIndex) -
+                Globals.ALL_RESOURCES[resourceNeeded].getAmount();
+
+
         if(Globals.AMOUNT_PER_SECOND[resourceNeeded] > 0){
             seconds = (int)(amountNeeded / Globals.AMOUNT_PER_SECOND[resourceNeeded]);
         }
-        
-        if(getTimeFromSeconds(seconds).equals("Now")){
-            return "";
-        }
-        else{
-            return "(" + getTimeFromSeconds(seconds) + ")";
-        }
-    }
-    public static String timeUntilCanResearchMagic(int magicIndex, int resourceIndex){
-        long seconds = 0;
-        int resourceNeeded = Globals.ALL_MAGIC[magicIndex].getOneRequired(resourceIndex);
-        double amountNeeded = Globals.ALL_MAGIC[magicIndex].getOnePrice(resourceIndex) - 
-                              Globals.ALL_RESOURCES[resourceNeeded].getAmount();
-        
-        
-        if(Globals.AMOUNT_PER_SECOND[resourceNeeded] > 0){
-            seconds = (int)(amountNeeded / Globals.AMOUNT_PER_SECOND[resourceNeeded]);
-        }
-        
-        if(getTimeFromSeconds(seconds).equals("Now")){
-            return "";
-        }
-        else{
-            return "(" + getTimeFromSeconds(seconds) + ")";
-        }
-    }
-    public static String timeUntilCanCraftResource(int craftIndex, int resourceIndex){
-        long seconds = 0;
-        int resourceNeeded = Globals.ALL_CRAFTABLE_RESOURCES[craftIndex].getOneRequired(resourceIndex);
-        double amountNeeded = Globals.ALL_CRAFTABLE_RESOURCES[craftIndex].getOnePrice(resourceIndex) - 
-                              Globals.ALL_RESOURCES[resourceNeeded].getAmount();
-        
-        
-        if(Globals.AMOUNT_PER_SECOND[resourceNeeded] > 0){
-            seconds = (int)(amountNeeded / Globals.AMOUNT_PER_SECOND[resourceNeeded]);
-        }
-        
-        if(getTimeFromSeconds(seconds).equals("Now")){
-            return "";
-        }
-        else{
-            return "(" + getTimeFromSeconds(seconds) + ")";
-        }
-    }
-    public static String timeUntilCanResearchUpgrade(int upgradeIndex, int resourceIndex){
-        long seconds = 0;
-        int resourceNeeded = Globals.ALL_UPGRADES[upgradeIndex].getOneRequired(resourceIndex);
-        double amountNeeded = Globals.ALL_UPGRADES[upgradeIndex].getOnePrice(resourceIndex) - 
-                              Globals.ALL_RESOURCES[resourceNeeded].getAmount();
-        
-        
-        if(Globals.AMOUNT_PER_SECOND[resourceNeeded] > 0){
-            seconds = (int)(amountNeeded / Globals.AMOUNT_PER_SECOND[resourceNeeded]);
-        }
-        
+
         if(getTimeFromSeconds(seconds).equals("Now")){
             return "";
         }
