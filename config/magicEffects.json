@@ -9,22 +9,22 @@
         "typeOfEffect": "-",
         "effectAmount": 1000.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 0,
-        "effectsWhatResource": 0
+        "effectsWhatObject": "b",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "-",
         "effectAmount": 5.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 8,
-        "effectsWhatResource": 8
+        "effectsWhatObject": "m",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "+",
         "effectAmount": 50.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 1,
-        "effectsWhatResource": 1
+        "effectsWhatObject": "w",
+        "effectsWhatResource": "!"
       }
     ]
   },
@@ -38,8 +38,8 @@
         "typeOfEffect": "-",
         "effectAmount": 0.04,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 8,
-        "effectsWhatResource": 8
+        "effectsWhatObject": "m",
+        "effectsWhatResource": "!"
       }
     ]
   },
@@ -53,15 +53,15 @@
         "typeOfEffect": "+",
         "effectAmount": 0.1,
         "effectsWhatObjectType": "b",
-        "effectsWhatObject": 7,
-        "effectsWhatResource": 1
+        "effectsWhatObject": "S",
+        "effectsWhatResource": "w"
       },
       {
         "typeOfEffect": "-",
         "effectAmount": 0.05,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 8,
-        "effectsWhatResource": 8
+        "effectsWhatObject": "m",
+        "effectsWhatResource": "!"
       }
     ]
   }

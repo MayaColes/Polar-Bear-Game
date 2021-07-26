@@ -6,7 +6,6 @@ import Windows.GameWindow;
 import Windows.SaveFileChooser;
 import FileWork.FileIO;
 import FileWork.Save;
-import GameObjects.*;
 
 public class Initialize {
     private static int[] numberOfBuildingsBuilt = new int[Globals.NUMBER_OF_BUILDINGS];

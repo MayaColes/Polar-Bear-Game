@@ -8,8 +8,8 @@
         "typeOfEffect": "m",
         "effectAmount": 2.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 6,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "B",
+        "effectsWhatResource": "!"
       }
     ],
     "enablable": false,
@@ -36,8 +36,8 @@
         "typeOfEffect": "+",
         "effectAmount": 0.73,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 0,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "b",
+        "effectsWhatResource": "!"
       }
     ],
     "enablable": false,
@@ -64,15 +64,15 @@
         "typeOfEffect": "m",
         "effectAmount": 250.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 4,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "s",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "%",
         "effectAmount": 0.1,
         "effectsWhatObjectType": "j",
-        "effectsWhatObject": 2,
-        "effectsWhatResource": 4
+        "effectsWhatObject": "r",
+        "effectsWhatResource": "s"
       }
     ],
     "enablable": false,
@@ -99,15 +99,15 @@
         "typeOfEffect": "%",
         "effectAmount": 0.2,
         "effectsWhatObjectType": "j",
-        "effectsWhatObject": 4,
-        "effectsWhatResource": 5
+        "effectsWhatObject": "m",
+        "effectsWhatResource": "S"
       },
       {
         "typeOfEffect": "%",
         "effectAmount": 0.05,
         "effectsWhatObjectType": "j",
-        "effectsWhatObject": 4,
-        "effectsWhatResource": 9
+        "effectsWhatObject": "m",
+        "effectsWhatResource": "o"
       }
     ],
     "enablable": false,
@@ -134,22 +134,22 @@
         "typeOfEffect": "+",
         "effectAmount": 1.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 7,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "W",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "-",
         "effectAmount": 0.1,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 1,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "w",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "-",
         "effectAmount": 0.1,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 3,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "I",
+        "effectsWhatResource": "!"
       }
     ],
     "enablable": true,
@@ -176,15 +176,15 @@
         "typeOfEffect": "m",
         "effectAmount": 20.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 8,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "m",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "%",
         "effectAmount": 0.06,
         "effectsWhatObjectType": "j",
-        "effectsWhatObject": 3,
-        "effectsWhatResource": 8
+        "effectsWhatObject": "S",
+        "effectsWhatResource": "m"
       }
     ],
     "enablable": false,
@@ -214,43 +214,43 @@
         "typeOfEffect": "m",
         "effectAmount": 1000.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 0,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "b",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "m",
         "effectAmount": 350.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 1,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "w",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "m",
         "effectAmount": 75.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 2,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "i",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "m",
         "effectAmount": 350.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 3,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "I",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "m",
         "effectAmount": 600.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 5,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "S",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "m",
         "effectAmount": 50.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 9,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "o",
+        "effectsWhatResource": "!"
       }
     ],
     "enablable": false,
@@ -277,22 +277,22 @@
         "typeOfEffect": "+",
         "effectAmount": 0.1,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 2,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "I",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "-",
         "effectAmount": 0.1,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 1,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "w",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "-",
         "effectAmount": 0.3,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 9,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "o",
+        "effectsWhatResource": "!"
       }
     ],
     "enablable": true,
@@ -319,15 +319,15 @@
         "typeOfEffect": "m",
         "effectAmount": 500.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 4,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "s",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "%",
         "effectAmount": 0.2,
         "effectsWhatObjectType": "j",
-        "effectsWhatObject": 2,
-        "effectsWhatResource": 4
+        "effectsWhatObject": "r",
+        "effectsWhatResource": "s"
       }
     ],
     "enablable": false,
@@ -357,8 +357,8 @@
         "typeOfEffect": "%",
         "effectAmount": 0.06,
         "effectsWhatObjectType": "e",
-        "effectsWhatObject": -1,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "!",
+        "effectsWhatResource": "!"
       }
     ],
     "enablable": false,
@@ -388,15 +388,15 @@
         "typeOfEffect": "m",
         "effectAmount": 50.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 7,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "W",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "+",
         "effectAmount": 0.7,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 7,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "W",
+        "effectsWhatResource": "!"
       }
     ],
     "enablable": false,
@@ -426,36 +426,36 @@
         "typeOfEffect": "m",
         "effectAmount": 100.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 1,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "w",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "m",
         "effectAmount": 50.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 2,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "i",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "m",
         "effectAmount": 50.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 3,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "I",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "m",
         "effectAmount": 250.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 5,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "S",
+        "effectsWhatResource": "!"
       },
       {
         "typeOfEffect": "m",
         "effectAmount": 25.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 9,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "o",
+        "effectsWhatResource": "!"
       }
     ],
     "enablable": false,
@@ -488,8 +488,8 @@
         "typeOfEffect": "m",
         "effectAmount": 1.0,
         "effectsWhatObjectType": "r",
-        "effectsWhatObject": 6,
-        "effectsWhatResource": -1
+        "effectsWhatObject": "B",
+        "effectsWhatResource": "!"
       }
     ],
     "enablable": false,
@@ -519,8 +519,8 @@
         "typeOfEffect": "%",
         "effectAmount": 0.03,
         "effectsWhatObjectType": "b",
-        "effectsWhatObject": 1,
-        "effectsWhatResource": 0
+        "effectsWhatObject": "b",
+        "effectsWhatResource": "b"
       }
     ],
     "enablable": false,

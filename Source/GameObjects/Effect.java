@@ -8,18 +8,18 @@ public class Effect {
     private double effectAmount;
     private transient double effectAmountWithBonus;
     private char effectsWhatObjectType;
-    private int effectsWhatObject;
-    private int effectsWhatResource;
+    private char effectsWhatObject;
+    private char effectsWhatResource;
     
     public Effect(){
         stringEffect = "";
         typeOfEffect = Globals.DEFAULT_IDENTIFIER;
         effectAmount = 0;
         effectsWhatObjectType = Globals.DEFAULT_IDENTIFIER;
-        effectsWhatObject = -1;
-        effectsWhatResource = -1;
+        effectsWhatObject = Globals.DEFAULT_IDENTIFIER;
+        effectsWhatResource = Globals.DEFAULT_IDENTIFIER;
     }
-    public Effect(char i, double a, char ot, int o, int r){
+    public Effect(char i, double a, char ot, char o, char r){
         typeOfEffect = i;
         effectAmount = a;
         effectsWhatObjectType = ot;
@@ -27,7 +27,7 @@ public class Effect {
         effectsWhatResource = r;
         makeEffect();
     }
-    public void createEffect(char i, double a, char ot, int o, int r){
+    public void createEffect(char i, double a, char ot, char o, char r){
         typeOfEffect = i;
         effectAmount = a;
         effectsWhatObjectType = ot;
@@ -43,18 +43,18 @@ public class Effect {
         StringBuffer effect = new StringBuffer();
 
         if(effectsWhatObjectType == Globals.RESOURCE_IDENTIFIER){
-            effect.append(Globals.ALL_RESOURCES[effectsWhatObject].getName());
+            effect.append(Globals.ALL_RESOURCES[Utils.findResourceFromIdentifier(effectsWhatObject)].getName());
         }
         else if(effectsWhatObjectType == Globals.CRAFTABLE_RESOURCE_IDENTIFIER){
-            effect.append(Globals.ALL_CRAFTABLE_RESOURCES[effectsWhatObject].getName());
+            effect.append(Globals.ALL_CRAFTABLE_RESOURCES[Utils.findCraftableResourceFromIdentifier(effectsWhatObject)].getName());
         }
         else if(effectsWhatObjectType == Globals.JOB_IDENTIFIER){
-            effect.append(Globals.ALL_JOBS[effectsWhatObject].getName() + " ");
-            effect.append(Globals.ALL_RESOURCES[effectsWhatResource].getName());
+            effect.append(Globals.ALL_JOBS[Utils.findJobFromIdentifier(effectsWhatObject)].getName() + " ");
+            effect.append(Globals.ALL_RESOURCES[Utils.findResourceFromIdentifier(effectsWhatResource)].getName());
         }
         else if(effectsWhatObjectType == Globals.BUILDING_IDENTIFIER){
-            effect.append(Globals.ALL_BUILDINGS[effectsWhatObject].getName() + " ");
-            effect.append(Globals.ALL_RESOURCES[effectsWhatResource].getName());
+            effect.append(Globals.ALL_BUILDINGS[Utils.findResourceFromIdentifier(effectsWhatObject)].getName() + " ");
+            effect.append(Globals.ALL_RESOURCES[Utils.findResourceFromIdentifier(effectsWhatResource)].getName());
         }
         else if(effectsWhatObjectType == Globals.CRAFT_EFFECTIVENESS_IDENTIFIER){
             effect.append("Craft Effectiveness");
@@ -85,7 +85,19 @@ public class Effect {
         return effectsWhatObjectType;
     }
     public int getEffectsWhatObject(){
-        return effectsWhatObject;
+        if(effectsWhatObjectType == 'b') {
+            return Utils.findBuildingFromIdentifier(effectsWhatObject);
+        }
+        else if(effectsWhatObjectType == 'r'){
+            return Utils.findResourceFromIdentifier(effectsWhatObject);
+        }
+        else if(effectsWhatObjectType == 'j'){
+            return Utils.findJobFromIdentifier(effectsWhatObject);
+        }
+        else if(effectsWhatObjectType == 'c'){
+            return Utils.findCraftableResourceFromIdentifier(effectsWhatObject);
+        }
+        return -1;
     }
     public double getEffectAmount(){
         return effectAmount;
@@ -98,6 +110,9 @@ public class Effect {
         makeEffect();
     }
     public int getEffectsWhatResource(){
-        return effectsWhatResource;
+        if(effectsWhatResource == Globals.DEFAULT_IDENTIFIER){
+            return -1;
+        }
+        return Utils.findResourceFromIdentifier(effectsWhatResource);
     }
 }

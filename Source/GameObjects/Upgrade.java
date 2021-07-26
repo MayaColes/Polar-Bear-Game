@@ -50,12 +50,12 @@ public class Upgrade extends Buildable{
         for(int i = 0; i < effects.size(); i++){
             if(effects.get(i).getEffectsWhatObjectType() == Globals.BUILDING_IDENTIFIER && researched){
                 if(effects.get(i).getTypeOfEffect() == Globals.POSITIVE_PRODUCTION_IDENTIFIER || effects.get(i).getTypeOfEffect() == Globals.NEGATIVE_PRODUCTION_IDENTIFIER){
-                    Globals.ALL_BUILDINGS[effects.get(i).getEffectsWhatObject()].addEffect(effects.get(i).getTypeOfEffect(), effects.get(i).getEffectAmount(), Globals.RESOURCE_IDENTIFIER, effects.get(i).getEffectsWhatResource(), 0);                
+                    Globals.ALL_BUILDINGS[effects.get(i).getEffectsWhatObject()].addEffect(effects.get(i).getTypeOfEffect(), effects.get(i).getEffectAmount(), Globals.RESOURCE_IDENTIFIER, Globals.ALL_RESOURCES[effects.get(i).getEffectsWhatResource()].getIdentifier(), Globals.ALL_RESOURCES[effects.get(i).getEffectsWhatResource()].getIdentifier());
                 }
             }
             if(effects.get(i).getEffectsWhatObjectType() == Globals.JOB_IDENTIFIER && researched){
                 if(effects.get(i).getTypeOfEffect() == Globals.PERCENT_BONUS_IDENTIFIER){
-                   Globals.ALL_JOBS[effects.get(i).getEffectsWhatObject()].addEffect(Globals.RESOURCE_IDENTIFIER, effects.get(i).getEffectsWhatResource(), Globals.PERCENT_BONUS_IDENTIFIER, effects.get(i).getEffectAmount());
+                   Globals.ALL_JOBS[effects.get(i).getEffectsWhatObject()].addEffect(Globals.RESOURCE_IDENTIFIER, Globals.ALL_RESOURCES[effects.get(i).getEffectsWhatResource()].getIdentifier(), Globals.PERCENT_BONUS_IDENTIFIER, effects.get(i).getEffectAmount());
                 }
             }
         }

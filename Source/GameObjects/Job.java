@@ -34,10 +34,10 @@ public class Job {
             effects.get(i).initializeEffect();
         }
     }
-    public void addEffect(char effectsWhichType, int whichObject, char effectType, double amount){
+    public void addEffect(char effectsWhichType, char whichObject, char effectType, double amount){
         if(effectType == Globals.POSITIVE_PRODUCTION_IDENTIFIER){
             Effect effect = new Effect();
-            effect.createEffect(identifier, amount, effectType, 0, whichObject);
+            effect.createEffect(effectType, amount, effectsWhichType, whichObject, whichObject);
         }
     }
     public void updateEffectWithBonus(double amount, char objectType, int whichObject){

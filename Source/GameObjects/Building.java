@@ -98,7 +98,7 @@ public class Building extends Buildable{
             }
         }
     }
-    public void addEffect(char i, double a, char ot, int o, int r){
+    public void addEffect(char i, double a, char ot, char o, char r){
         Effect effect = new Effect(i, a, ot, o, r);
         effects.add(effect);
         sortEffects();
