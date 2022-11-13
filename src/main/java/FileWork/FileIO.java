@@ -69,13 +69,13 @@ public class FileIO {
                 Globals.ALL_MAGIC_EFFECTS = gson.fromJson(c[i], MagicEffect[].class);
             }
             else if(fileName.equals("magics.json")){
-                Globals.ALL_MAGIC = gson.fromJson(c[i], Magic[].class);
+                Globals.ALL_MAGIC = gson.fromJson(c[i], Research[].class);
             }
             else if(fileName.equals("resources.json")){
                 Globals.ALL_RESOURCES = gson.fromJson(c[i], Resource[].class);
             }
             else if(fileName.equals("sciences.json")){
-                Globals.ALL_SCIENCES = gson.fromJson(c[i], Science[].class);
+                Globals.ALL_SCIENCES = gson.fromJson(c[i], Research[].class);
             }
             else if(fileName.equals("upgrades.json")){
                 Globals.ALL_UPGRADES = gson.fromJson(c[i], Upgrade[].class);

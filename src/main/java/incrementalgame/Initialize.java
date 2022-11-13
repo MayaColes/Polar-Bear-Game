@@ -306,10 +306,21 @@ public class Initialize {
             Globals.ALL_JOBS[j].initializeJob(numberWorking[j]);
         }
         for(int j = 0; j < Globals.NUMBER_OF_TECHNOLOGIES; j++){
-            Globals.ALL_SCIENCES[j].initalizeScience(scienceResearched[j]);
+            System.out.println(Globals.ALL_SCIENCES[j].getDependancyPos() + Globals.ALL_SCIENCES[j].getName());
+            if(Globals.ALL_SCIENCES[j].getDependancyPos() != -1){
+                Globals.ALL_SCIENCES[j].initalizeResearch(scienceResearched[j], Globals.ALL_SCIENCES[Globals.ALL_SCIENCES[j].getDependancyPos()]);
+            }
+            else{
+                Globals.ALL_SCIENCES[j].initalizeResearch(scienceResearched[j], null);
+            }
         }
         for(int j = 0; j < Globals.NUMBER_OF_MAGICS; j++){
-            Globals.ALL_MAGIC[j].initalizeMagic(magicResearched[j]);
+            if(Globals.ALL_MAGIC[j].getDependancyPos() != -1){
+                Globals.ALL_MAGIC[j].initalizeResearch(magicResearched[j], Globals.ALL_MAGIC[Globals.ALL_MAGIC[j].getDependancyPos()]);
+            }
+            else{
+                Globals.ALL_MAGIC[j].initalizeResearch(magicResearched[j], null);
+            }
         }
         for(int j = 0; j < Globals.NUMBER_OF_MAGIC_EFFECTS; j++){
             Globals.ALL_MAGIC_EFFECTS[j].initializeMagicEffect();

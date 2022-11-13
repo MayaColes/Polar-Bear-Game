@@ -3,18 +3,20 @@ import Utils.Globals;
 
 public class Research extends Buildable{
     private transient boolean isResearched;
-    private Research dependancy;
+    private transient Research dependancy;
+    private int dependancyPos;
     private String toolTipText;
     private transient boolean visible;
     
-    public Research(boolean i, Research d, boolean v, String t){
+    public Research(boolean i, int d, boolean v, String t){
         isResearched = i;
-        dependancy = d;
+        dependancyPos = d;
         visible = v;
         toolTipText = "";
     }
-    public void initalizeResearch(boolean i){
+    public void initalizeResearch(boolean i, Research dep){
         isResearched = i;
+        dependancy = dep;
         checkVisible();
     }
     public void completeResearch(){
@@ -53,5 +55,8 @@ public class Research extends Buildable{
     }
     public void setVisible(boolean v){
         visible = v;
+    }
+    public int getDependancyPos(){
+        return dependancyPos;
     }
 }

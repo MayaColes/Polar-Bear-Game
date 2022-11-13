@@ -223,13 +223,12 @@ public class Formatting {
         }
         return "<html>" + s + "<html>";
     }
-    public static String scienceTooltip(int scienceNumber){
+    public static String researchTooltip(Research research){
         StringBuffer s = new StringBuffer();
-        Science science = Globals.ALL_SCIENCES[scienceNumber];
 
-        s.append("<html>" + sizeToolTip(science.getToolTipText(), 50) + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
+        s.append("<html>" + sizeToolTip(research.getToolTipText(), 50) + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
 
-        s.append(buildableToolTip(science));
+        s.append(buildableToolTip(research));
 
         return s + "<html>";
     }
@@ -249,16 +248,6 @@ public class Formatting {
         }
         
         return "<html>" + s + "<html>";
-    }
-    public static String magicTooltip(int magicNumber){
-        StringBuffer s = new StringBuffer();
-        Magic magic = Globals.ALL_MAGIC[magicNumber];
-
-        s.append("<html>" + magic.getToolTipText() + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
-        
-        s.append(buildableToolTip(magic));
-
-        return s + "<html>";
     }
     public static String craftableResourceTooltip(int resourceNumber){
         StringBuffer s = new StringBuffer();

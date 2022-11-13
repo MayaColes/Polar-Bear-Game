@@ -1,6 +1,6 @@
 [
   {
-    "dependancy": -1,
+    "dependancyPos": -1,
     "toolTipText": "Allows you see the time of year.",
     "name": "Calendar",
     "identifier": "c",
@@ -15,7 +15,7 @@
     ]
   },
   {
-    "dependancy": 0,
+    "dependancyPos": 0,
     "toolTipText": "Unlocks the farmer. Farmers produce 5 berries per second.",
     "name": "Agriculture",
     "identifier": "a",
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "dependancy": 0,
+    "dependancyPos": 0,
     "toolTipText": "Unlocks the hunter.",
     "name": "Organized Hunting",
     "identifier": "o",
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "dependancy": 1,
+    "dependancyPos": 1,
     "toolTipText": "Unlocks the mine.",
     "name": "Mining",
     "identifier": "m",
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "dependancy": 3,
+    "dependancyPos": 3,
     "toolTipText": "Unlocks the smeltery, a building that allows you to make iron.",
     "name": "Metal Work",
     "identifier": "M",
@@ -75,7 +75,7 @@
     ]
   },
   {
-    "dependancy": 1,
+    "dependancyPos": 1,
     "toolTipText": "Fill the sacred tomes with precious bearkind knowledge.",
     "name": "Writing",
     "identifier": "w",
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "dependancy": 5,
+    "dependancyPos": 5,
     "toolTipText": "Unlocks the magic pathway. \u003cbr\u003e\u003cbr\u003e Fireball! FireBall!",
     "name": "Spell Casting",
     "identifier": "s",
@@ -105,7 +105,7 @@
     ]
   },
   {
-    "dependancy": 4,
+    "dependancyPos": 4,
     "toolTipText": "Construction is the art of building structures that don\u0027t fall down long enough to be useful.",
     "name": "Construction",
     "identifier": "C",
@@ -120,7 +120,7 @@
     ]
   },
   {
-    "dependancy": 5,
+    "dependancyPos": 5,
     "toolTipText": "I\u0027ll give you this metal circle for your berries.",
     "name": "Currency",
     "identifier": "U",
@@ -135,7 +135,7 @@
     ]
   },
   {
-    "dependancy": 7,
+    "dependancyPos": 7,
     "toolTipText": "Using the power of math, you can now construct more complex buildings.",
     "name": "Engineering",
     "identifier": "E",
@@ -150,7 +150,7 @@
     ]
   },
   {
-    "dependancy": 9,
+    "dependancyPos": 9,
     "toolTipText": "Mixing different metals and materials can produce stronger building materials.",
     "name": "Alloying",
     "identifier": "A",

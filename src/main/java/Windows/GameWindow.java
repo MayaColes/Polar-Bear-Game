@@ -715,7 +715,7 @@ public class GameWindow implements ActionListener, MouseMotionListener{
                 };
                 
                 sciences[i].setFont(monospaced);
-                sciences[i].setToolTipText(Formatting.scienceTooltip(i));
+                sciences[i].setToolTipText(Formatting.researchTooltip(Globals.ALL_SCIENCES[i]));
                 sciences[i].addActionListener(this);
                 Globals.BUILDING_GRID_ROW++;
                 buildingArea.add(sciences[i], c);
@@ -728,7 +728,7 @@ public class GameWindow implements ActionListener, MouseMotionListener{
     public void refreshScienceToolTips(){
         for(int i = 0; i < Globals.NUMBER_OF_TECHNOLOGIES; i++){
             if(Globals.ALL_SCIENCES[i].getVisible()){
-                sciences[i].setToolTipText(Formatting.scienceTooltip(i));
+                sciences[i].setToolTipText(Formatting.researchTooltip(Globals.ALL_SCIENCES[i]));
             }
         }
     }
@@ -749,7 +749,7 @@ public class GameWindow implements ActionListener, MouseMotionListener{
                 };
                 
                 magics[i].setFont(monospaced);
-                magics[i].setToolTipText(Formatting.magicTooltip(i));
+                magics[i].setToolTipText(Formatting.researchTooltip(Globals.ALL_MAGIC[i]));
                 magics[i].addActionListener(this);
                 Globals.BUILDING_GRID_ROW++;
                 buildingArea.add(magics[i], c);
@@ -808,7 +808,7 @@ public class GameWindow implements ActionListener, MouseMotionListener{
     public void refreshMagicToolTips(){ 
         for(int i = 0; i < Globals.NUMBER_OF_MAGICS; i++){
             if(Globals.ALL_MAGIC[i].getVisible()){
-                magics[i].setToolTipText(Formatting.magicTooltip(i));
+                magics[i].setToolTipText(Formatting.researchTooltip(Globals.ALL_MAGIC[i]));
             }
         }
     }
@@ -1159,7 +1159,7 @@ public class GameWindow implements ActionListener, MouseMotionListener{
         for(int i = 0; i < Globals.NUMBER_OF_TECHNOLOGIES; i++){
             if(buttonPressed == sciences[i]){
                 if(Globals.ALL_SCIENCES[i].checkIfBuildable()){
-                    Globals.ALL_SCIENCES[i].researchScience();
+                    Globals.ALL_SCIENCES[i].completeResearch();
                     for(int h = 0; h < Globals.NUMBER_OF_TECHNOLOGIES; h++){
                         Globals.ALL_SCIENCES[h].checkVisible();
                     }
@@ -1175,7 +1175,7 @@ public class GameWindow implements ActionListener, MouseMotionListener{
         for(int i = 0; i < Globals.NUMBER_OF_MAGICS; i++){
             if(buttonPressed == magics[i]){
                 if(Globals.ALL_MAGIC[i].checkIfBuildable()){
-                    Globals.ALL_MAGIC[i].researchMagic();
+                    Globals.ALL_MAGIC[i].completeResearch();
                     for(int h = 0; h < Globals.NUMBER_OF_MAGICS; h++){
                         Globals.ALL_MAGIC[h].checkVisible();
                     }

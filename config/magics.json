@@ -1,6 +1,6 @@
 [
   {
-    "dependancy": 0,
+    "dependancyPos": -1,
     "toolTipText": "Control the mighty powers of dust motes. Also works on snow.",
     "name": "Dustomancy",
     "identifier": "d",
@@ -15,7 +15,7 @@
     ]
   },
   {
-    "dependancy": 0,
+    "dependancyPos": 0,
     "toolTipText": "Turn this into that! Wow!",
     "name": "Transfiguration",
     "identifier": "t",
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "dependancy": 0,
+    "dependancyPos": 0,
     "toolTipText": "Uhh.. That building was always on fire...",
     "name": "Pyromancy",
     "identifier": "p",

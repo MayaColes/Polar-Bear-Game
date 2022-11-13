@@ -44,9 +44,9 @@ public class Globals {
     
     public static Building[] ALL_BUILDINGS;
     public static Resource[] ALL_RESOURCES;
-    public static Science[] ALL_SCIENCES;
+    public static Research[] ALL_SCIENCES;
     public static Job[] ALL_JOBS;
-    public static Magic[] ALL_MAGIC;
+    public static Research[] ALL_MAGIC;
     public static MagicEffect[] ALL_MAGIC_EFFECTS;
     public static CraftableResource[] ALL_CRAFTABLE_RESOURCES;
     public static Upgrade[] ALL_UPGRADES;
