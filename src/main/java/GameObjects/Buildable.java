@@ -9,7 +9,6 @@ abstract public class Buildable{
     private char[] resourcesRequired;
     private double[] price;
     private boolean[] resourceCraftable;
-    private transient String dependancy;
     
     public Buildable(){
         name = "";
@@ -54,8 +53,5 @@ abstract public class Buildable{
     }
     public char getIdentifier(){
         return identifier;
-    }
-    public String getDependancy(){
-        return dependancy;
     }
 }
