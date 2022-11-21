@@ -498,7 +498,7 @@ public class GameWindow implements ActionListener, MouseMotionListener{
                     first = !first;
                 }
                 
-                buildings[i].setToolTipText(Formatting.buildingTooltip(i));
+                buildings[i].setToolTipText(Formatting.buildingTooltip(Globals.ALL_BUILDINGS[i]));
                 buildings[i].addActionListener(this);
                 
                 c.weightx = 1;
@@ -516,7 +516,7 @@ public class GameWindow implements ActionListener, MouseMotionListener{
     public void refreshBuildingToolTips(){
         for(int i = 0; i < Globals.NUMBER_OF_BUILDINGS; i++){
             if(Globals.ALL_BUILDINGS[i].getBuildable()){
-                buildings[i].setToolTipText(Formatting.buildingTooltip(i));
+                buildings[i].setToolTipText(Formatting.buildingTooltip(Globals.ALL_BUILDINGS[i]));
             }
         }
     }

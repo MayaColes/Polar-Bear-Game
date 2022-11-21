@@ -306,7 +306,6 @@ public class Initialize {
             Globals.ALL_JOBS[j].initializeJob(numberWorking[j]);
         }
         for(int j = 0; j < Globals.NUMBER_OF_TECHNOLOGIES; j++){
-            System.out.println(Globals.ALL_SCIENCES[j].getDependancyPos() + Globals.ALL_SCIENCES[j].getName());
             if(Globals.ALL_SCIENCES[j].getDependancyPos() != -1){
                 Globals.ALL_SCIENCES[j].initalizeResearch(scienceResearched[j], Globals.ALL_SCIENCES[Globals.ALL_SCIENCES[j].getDependancyPos()]);
             }

@@ -30,6 +30,21 @@ abstract public class Buildable{
         }
         return canBuild;
     }
+    public boolean checkIfBuildable(int numberToBuild) {
+        for(int i = 0; i < price.length; i++){
+            if(!resourceCraftable[i]){
+                if(Globals.ALL_RESOURCES[getOneRequired(i)].getAmount() < (price[i] * numberToBuild)){
+                    return false;
+                }
+            }
+            else if(resourceCraftable[i]){
+                if(Globals.ALL_CRAFTABLE_RESOURCES[getOneRequired(i)].getAmount() < (price[i] * numberToBuild)){
+                    return true;
+                }
+            }
+        }
+        return true;
+    }
     public int getNumberOfResources(){
         return price.length;
     }

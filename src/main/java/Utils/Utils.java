@@ -113,14 +113,16 @@ public class Utils {
         }
     }
     public static boolean checkBuildingProduction(int index, int numberEnabled){
-        boolean canProduce = true;
-        
         for(int i = 0; i < Globals.ALL_BUILDINGS[index].getNumberOfEffects(); i++){
-            if(Globals.ALL_RESOURCES[Globals.ALL_BUILDINGS[index].getOneEffect(i).getEffectsWhatObject()].getAmount() - Globals.ALL_BUILDINGS[index].getOneEffect(i).getEffectAmount() * numberEnabled < 0 && Globals.ALL_BUILDINGS[index].getOneEffect(i).getTypeOfEffect() == Globals.NEGATIVE_PRODUCTION_IDENTIFIER){
-                canProduce = false;
+            if(Globals.ALL_BUILDINGS[index].getOneEffect(i).getEffectsWhatObject() != -1){
+                if(Globals.ALL_RESOURCES[Globals.ALL_BUILDINGS[index].getOneEffect(i).getEffectsWhatObject()].getAmount() - 
+                   Globals.ALL_BUILDINGS[index].getOneEffect(i).getEffectAmount() * numberEnabled < 0 &&
+                   Globals.ALL_BUILDINGS[index].getOneEffect(i).getTypeOfEffect() == Globals.NEGATIVE_PRODUCTION_IDENTIFIER){
+                    return false;
+                }
             }
         }
-        return canProduce;
+        return true;
     }
     public static void checkResourceVisibility(){
         for(int i = 0; i < Globals.NUMBER_OF_RESOURCES; i++){

@@ -88,33 +88,41 @@ public class Formatting {
         }
         return position;
     }
-    public static String buildableToolTip(Buildable buildable){
+    private static String buildableToolTip(Buildable buildable){
         StringBuffer s = new StringBuffer();
+        s.append("<table style='width: 210px'>");
 
         for(int l = 0; l < buildable.getNumberOfResources(); l++) {
             if (!buildable.getOneResourceCraftable(l)) {
                 Resource resource = Globals.ALL_RESOURCES[buildable.getOneRequired(l)];
 
                 if (resource.getAmount() < buildable.getOnePrice(l)) {
-                    s.append("<br>" + coloredMiddlePadding(resource.getName()
-                            + ": ", formatAmount(resource.getAmount()) + "/" +
+                    s.append("<tr style='padding: 0; color: red'>" + "<td style='padding: 0'>" + resource.getName()+ ": " + "</td>" +
+                            "<td style='text-align: right; padding: 0'>" + formatAmount(resource.getAmount()) + "/" +
                             formatAmount(buildable.getOnePrice(l)) +
-                            Utils.timeUntilCanBuildBuildable(buildable, l), 45, "<font color=red>"));
+                            Utils.timeUntilCanBuildBuildable(buildable, l) + "</td>" + "</tr>");
                 } else {
-                    s.append("<br>" + middlePadding(resource.getName()
-                            + ": ", formatAmount(buildable.getOnePrice(l)) +
-                            Utils.timeUntilCanBuildBuildable(buildable, l), 45));
+                    s.append("<tr style='padding: 0'>" + "<td style='padding: 0'>" + resource.getName() + ": " + "</td>" +
+                            "<td style='text-align: right; padding: 0'>" + formatAmount(buildable.getOnePrice(l)) +
+                            Utils.timeUntilCanBuildBuildable(buildable, l) + "</td>" + "</tr>");
                 }
             } else {
                 CraftableResource resource = Globals.ALL_CRAFTABLE_RESOURCES[buildable.getOneRequired(l)];
 
                 if (resource.getAmount() >= buildable.getOnePrice(l)) {
-                    s.append("<br>" + (middlePadding(resource.getName()
-                            + ": ", formatAmount(buildable.getOnePrice(l)), 45)));
+                    s.append("<tr style='padding: 0'>" + "<td style='padding: 0'>" + resource.getName()+ ": " + "</td>" + 
+                            "<td style='text-align: right; padding: 0'>"  + formatAmount(buildable.getOnePrice(l)) + "</td>" + "</tr>");
                 } else if (resource.getAmount() < buildable.getOnePrice(l)) {
-
-                    s.append("<br>" + (middlePadding(resource.getName()
-                            + ": ", formatAmount(resource.getAmount()) + " / " + formatAmount(buildable.getOnePrice(l)), 45)));
+                    if(resource.checkIfBuildable((int)Math.ceil((buildable.getOnePrice(l) - resource.getAmount()) / AmountCalculator.calculateCraftEffectiveness()))){
+                        s.append("<tr style='padding: 0'>" + "<td style='padding: 0'>" + resource.getName() + ": " + "</td>" +
+                            "<td style='text-align: right; padding: 0'>" + formatAmount(resource.getAmount()) + " / " +
+                            formatAmount(buildable.getOnePrice(l)) + "</td>" + "</tr>");
+                    }
+                    else{
+                        s.append("<tr style='padding: 0; color: red'>" + "<td style='padding: 0'>" + resource.getName() + ": " + "</td>" +
+                            "<td style='text-align: right; padding: 0'>" + formatAmount(resource.getAmount()) + " / " +
+                            formatAmount(buildable.getOnePrice(l)) + "</td>" + "</tr>");
+                    }
 
                     for (int i = 0; i < resource.getNumberOfResources(); i++) {
 
@@ -124,59 +132,59 @@ public class Formatting {
                         amountNeeded = Math.ceil(amountNeeded / AmountCalculator.calculateCraftEffectiveness()) * resource.getOnePrice(i);
 
                         if (Globals.ALL_RESOURCES[resourceNumber].getAmount() >= amountNeeded) {
-                            s.append("<br>" + indent(2) + middlePadding("> " + Globals.ALL_RESOURCES[resourceNumber].getName() + ":", formatAmount(amountNeeded), 42));
+                            s.append("<tr style='padding: 0'>"  + "<td style='padding: 0'>" + indent(2) + "> " + Globals.ALL_RESOURCES[resourceNumber].getName() + ":" + "</td>" +
+                                     "<td style='text-align: right; padding: 0'>" + formatAmount(amountNeeded) + "</td>" + "</tr>");
                         } else if (Globals.ALL_RESOURCES[resourceNumber].getAmount() < amountNeeded) {
-                            s.append("<br>" + indent(2) + coloredMiddlePadding("> " +
-                                            Globals.ALL_RESOURCES[resourceNumber].getName() + ":",
-                                    Utils.timeUntilAmount(resourceNumber, amountNeeded) + " " +
-                                            formatAmount(Globals.ALL_RESOURCES[resourceNumber].getAmount()) + "/"
-                                            + formatAmount(amountNeeded), 42, "<font color=red>"));
+                            s.append("<tr style='padding: 0; color: red'>" + "<td style='padding: 0'>" + indent(2) + "> " + Globals.ALL_RESOURCES[resourceNumber].getName() + ":" + "</td>" +
+                                    "<td style='text-align: right; padding: 0'>" + Utils.timeUntilAmount(resourceNumber, amountNeeded) + " " +
+                                    formatAmount(Globals.ALL_RESOURCES[resourceNumber].getAmount()) + "/" + 
+                                    formatAmount(amountNeeded) + "</td>" + "</tr>");
                         }
                     }
                 }
             }
         }
 
+        s.append("</table>");
+
         return s.toString();
     }
-    public static String buildingTooltip(int buildingNumber){
-        StringBuffer s = new StringBuffer();
-        Building building = Globals.ALL_BUILDINGS[buildingNumber];
-
-        s.append("<html>" + sizeToolTip(building.getToolTipText(), 50) + "<br>" + "_____________________________________________" + "<br>" + "<br>" + "Cost:");
-
-        s.append(buildableToolTip(building));
-        
-        s.append("<br>" + "_____________________________________________" + "<br>" + "<br>" + "Effects:" + "<br>" + "<font color=light_gray>");
+    public static String buildingTooltip(Building building){
+        String effects = "";
+        String secondaryToolTip = "e";
         
         for(int i = 0; i < building.getNumberOfEffects(); i++){
-            s.append(building.getOneEffect(i).getStringEffect() + "<br>");
+            effects += building.getOneEffect(i).getStringEffect() + "<br>";
         }
-        
-        s.append("</font>");
         
         if(building.getSecondaryToolTip().length() != 0){
-            s.append("<br>" + "<i>" + middlePadding(" ", building.getSecondaryToolTip(), 45) + "</i>");
+            secondaryToolTip = "<br>" + "<i>" + middlePadding(" ", building.getSecondaryToolTip(), 45) + "</i>";
         }            
-        
-        return s + "<html>";
+        return FormatStrings.buildingToolTipTemplate.formatted(
+            sizeToolTip(building.getToolTipText(), 50),
+            buildableToolTip(building),
+            effects,
+            secondaryToolTip);
     }
     public static String resourceName(int resourceNumber){
-        StringBuffer s = new StringBuffer();
-        s.append("<html>" + "<font color=" + Globals.ALL_RESOURCES[resourceNumber].getColor() + ">" + Globals.ALL_RESOURCES[resourceNumber].getName() + "</font>: " + formatAmount(Globals.ALL_RESOURCES[resourceNumber].getAmount()) +
-                 " / " + formatAmount(Globals.ALL_RESOURCES[resourceNumber].getMaximum()));
+        String amountPerSecond = "";
         
         if(Globals.AMOUNT_PER_SECOND[resourceNumber] > 0){
-            s.append(" (+" + formatAmount(Globals.AMOUNT_PER_SECOND[resourceNumber]) + Utils.checkToSmall(Globals.AMOUNT_PER_SECOND[resourceNumber]) + "/sec)");
+            amountPerSecond = " (+" + formatAmount(Globals.AMOUNT_PER_SECOND[resourceNumber]) + Utils.checkToSmall(Globals.AMOUNT_PER_SECOND[resourceNumber]) + "/sec)";
         }
         else if(Globals.AMOUNT_PER_SECOND[resourceNumber] < 0){
-            s.append(" (");
-            if(Globals.AMOUNT_PER_SECOND[resourceNumber] > -0.005){
-                s.append("-");
+            amountPerSecond = " (";
+            if(Utils.checkToSmall(Globals.AMOUNT_PER_SECOND[resourceNumber]) != ""){
+                amountPerSecond += "-";
             }
-            s.append(formatAmount(Globals.AMOUNT_PER_SECOND[resourceNumber]) + Utils.checkToSmall(Globals.AMOUNT_PER_SECOND[resourceNumber])+ "/sec)");
+            amountPerSecond += formatAmount(Globals.AMOUNT_PER_SECOND[resourceNumber]) + Utils.checkToSmall(Globals.AMOUNT_PER_SECOND[resourceNumber])+ "/sec)";
         }
-        return s + "<html>";
+        return FormatStrings.resourceNamesTemplate.formatted(
+            Globals.ALL_RESOURCES[resourceNumber].getColor(),
+            Globals.ALL_RESOURCES[resourceNumber].getName(),
+            formatAmount(Globals.ALL_RESOURCES[resourceNumber].getAmount()),
+            formatAmount(Globals.ALL_RESOURCES[resourceNumber].getMaximum()),
+            amountPerSecond);
     }
     public static String resourceToolTip(int resourceNumber){
         StringBuffer s = new StringBuffer();

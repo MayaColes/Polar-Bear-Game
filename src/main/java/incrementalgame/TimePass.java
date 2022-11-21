@@ -16,7 +16,7 @@ public class TimePass {
            @Override
             public void run() {
                 
-IncrementalGame.testing();
+//IncrementalGame.testing();
 
                 if(!Globals.PAUSED){
                     AmountCalculator.calculateProductionPerTurn();
